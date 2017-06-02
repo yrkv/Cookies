@@ -13,7 +13,6 @@ public class Main {
 
 	public Main() {
 		frame = new JFrame();
-
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setSize(frame.getWidth(), frame.getHeight());
