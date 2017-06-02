@@ -1,9 +1,9 @@
-package mouse;
+package main.mouse;
 
 import javax.swing.*;
 
 public class Mouse {
-	public int x, y;
+	public int x = 0, y = 0;
 
 	public Mouse(JFrame frame) {
 		frame.addMouseListener(new MouseEvents(this));

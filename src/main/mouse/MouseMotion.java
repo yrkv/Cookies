@@ -1,4 +1,4 @@
-package mouse;
+package main.mouse;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -18,6 +18,7 @@ public class MouseMotion implements MouseMotionListener {
 	}
 
 	public void mouseMoved(MouseEvent e) {
-
+		mouse.x = e.getX();
+		mouse.y = e.getY();
 	}
 }
