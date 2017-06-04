@@ -1,84 +1,135 @@
 package main;
 
-import main.entity.moving.CookieMan;
-import main.keyboard.Keyboard;
-import main.mouse.Mouse;
-import javax.swing.*;
-import java.awt.*;
+import main.entity.moving.Player;
+import main.keyboard.Key;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+import org.newdawn.slick.util.ResourceLoader;
+
+import static org.lwjgl.opengl.GL11.*;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class Main {
-	private JFrame frame;
-	private Mouse mouse;
-	private Keyboard keyboard;
+	private Player player;
+	private Key keyboard;
 
-	private CookieMan player;
+	private long totalFrames = 0;
+	private long startTime;
+	private double t;
 
-	private boolean running = true;
-	private int totalFrames = 0;
+	public void start() throws IOException {
+		try {
+			Display.setDisplayMode(new DisplayMode(800,600));
+			Display.create();
+		} catch (LWJGLException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 
-	public static void main(String[] args)  {
-		new Main();
+		init();
+		loop();
+
+		Display.destroy();
 	}
 
-	public Main() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setSize(frame.getWidth(), frame.getHeight());
-		frame.setUndecorated(true);
+	public void init() throws IOException {
+		glEnable(GL_TEXTURE_2D);
 
-		mouse = new Mouse(frame);
-		keyboard = new Keyboard();
-		frame.addKeyListener(keyboard);
-		player = new CookieMan(300, 300, 0);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, 800, 0, 600, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
 
-		JPanel panel = new JPanel() {
-			public void paintComponent(Graphics g) {
-				render(g);
+		keyboard = new Key();
+		player = new Player(100, 100, 0);
+	}
+
+	public void loop() {
+		int texID = glGenTextures();
+
+		ByteBuffer bb = BufferUtils.createByteBuffer(Display.getWidth()*Display.getHeight()*3);
+
+		for (int i = 0; i < Display.getWidth(); i++) {
+			for (int j = 0; j < Display.getHeight(); j++) {
+				bb.put((byte) 0x00);
+				bb.put((byte) 0x00);
+				bb.put((byte) 0x00);
+//				bb.put((byte) 0x00);
 			}
-		};
+		}
+		bb.flip();
 
-		frame.add(panel);
-		frame.setVisible(true);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 
-		run();
+		t = startTime = System.currentTimeMillis();
+
+		while (!Display.isCloseRequested()) {
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Display.getWidth(), Display.getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, bb);
+
+			glBegin(GL_QUADS);
+				glTexCoord2f(0,0);
+				glVertex2f(0,0);
+
+				glTexCoord2f(1,0);
+				glVertex2f(Display.getWidth(),0);
+
+				glTexCoord2f(1,1);
+				glVertex2f(Display.getWidth(),Display.getHeight());
+
+				glTexCoord2f(0,1);
+				glVertex2f(0,Display.getHeight());
+			glEnd();
+
+			totalFrames++;
+			run();
+			Display.update();
+		}
 	}
 
-	private void render(Graphics g) {
-		g.drawOval((int) player.getX() - 5, (int) player.getY() - 5, 10, 10);
-		g.drawLine((int) player.getX(),
-				(int) player.getY(),
-				(int) player.getX() + (int) (Math.cos(player.getDir()) * 100),
-				(int) player.getY() + (int) (Math.sin(player.getDir()) * 100));
-		totalFrames++;
+	public static void main(String[] args) throws IOException {
+		new Main().start();
+	}
+
+//	private void render(Graphics g) {
+//		g.drawOval((int) player.getX() - 5, (int) player.getY() - 5, 10, 10);
+//		g.drawLine((int) player.getX(),
+//				(int) player.getY(),
+//				(int) player.getX() + (int) (Math.cos(player.getDir()) * 100),
+//				(int) player.getY() + (int) (Math.sin(player.getDir()) * 100));
+//		totalFrames++;
+//	}
+
+	private void run() {
+		keyboard.update();
+
+		if (System.currentTimeMillis() - t > (double) 1000 / 60) {
+			update();
+			t += (double) 1000 / 60;
+		}
 	}
 
 	private void update() {
-		if (keyboard.key['w']) player.move(5, 0.5*Math.PI);
-		if (keyboard.key['a']) player.move(5, 1.0*Math.PI);
-		if (keyboard.key['s']) player.move(5, 1.5*Math.PI);
-		if (keyboard.key['d']) player.move(5, 0.0*Math.PI);
+		if (keyboard.key[Keyboard.KEY_W]) player.move(5, 0.5*Math.PI);
+		if (keyboard.key[Keyboard.KEY_A]) player.move(5, 1.0*Math.PI);
+		if (keyboard.key[Keyboard.KEY_S]) player.move(5, 1.5*Math.PI);
+		if (keyboard.key[Keyboard.KEY_D]) player.move(5, 0.0*Math.PI);
 
-		if (mouse.x >= player.getX())
-			player.setDir(Math.atan((mouse.y - player.getY()) / (mouse.x - player.getX())));
+		if (Mouse.getX() >= player.getX())
+			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
 		else
-			player.setDir(Math.atan((mouse.y - player.getY()) / (mouse.x - player.getX())) + Math.PI);
-	}
-
-	private void run() {
-		long s = System.currentTimeMillis();
-		double t = System.currentTimeMillis();
-		while (running) {
-			double dt = System.currentTimeMillis() - t;
-			int ds = (int) (System.currentTimeMillis() - s);
-			if (dt >= 1000 / 60.0) {
-				t += 1000 / 60.0;
-				update();
-			}
-			if (ds >= 1000) {
-				s += 1000;
-			}
-			frame.repaint();
-		}
+			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
 	}
 }
