@@ -18,7 +18,7 @@ public class meleeWalkingZombie extends Enemy {
         double dx = px - getX();
         double dy = py - getY();
 
-        double slope = dy/dx;
+        double slope = -dy/dx;
 
         if (dx == 0 && dy == 0) {
             setSpeed(0);
@@ -30,7 +30,7 @@ public class meleeWalkingZombie extends Enemy {
         if(dx>0) {
             setDir(Math.atan(slope));
         } else if(dx<0) {
-            setDir(Math.PI-Math.atan(slope));
+            setDir(Math.PI+Math.atan(slope));
         }
     }
 }
