@@ -9,8 +9,8 @@ import org.newdawn.slick.opengl.Texture;
 public class Sprite {
 	public Image image;
 
-	public static final Sprite mainCharacter = new Sprite("res/mainCharacter.jpg");
-	public static final Sprite meleeWalkingZombie = new Sprite("res/meleeWalkingZombie.jpg");
+	public static final Sprite mainCharacter = new Sprite("res/mainCharacter.png");
+	public static final Sprite meleeWalkingZombie = new Sprite("res/meleeWalkingZombie.png");
 
 	public static final Sprite tile1 = new Sprite(0, 0, SpriteSheet.tiles);
 	public static final Sprite tile2 = new Sprite(1, 0, SpriteSheet.tiles);

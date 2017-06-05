@@ -53,6 +53,7 @@ public class Main {
 		glLoadIdentity();
 		glOrtho(0, Display.getWidth(), Display.getHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
+		glEnable (GL_BLEND); glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		keyboard = new Key();
 		player = new Player(100, 100, 0, 5);
@@ -85,14 +86,14 @@ public class Main {
 	private void render() {
 //		Sprite.zombie.render(0, 0, 200, 200);
 
-		player.render();
+		player.render(200, 250);
 
-        zombie1.render(100, 100);
-        zombie2.render(100, 100);
-        zombie3.render(100, 100);
-        zombie4.render(100, 100);
-        zombie5.render(100, 100);
-        zombie6.render(100, 100);
+        zombie1.render(100, 150);
+        zombie2.render(100, 150);
+        zombie3.render(100, 150);
+        zombie4.render(100, 150);
+        zombie5.render(100, 150);
+        zombie6.render(100, 150);
 
 
         Sprite.tile1.render(0, 0, 32, 32);
