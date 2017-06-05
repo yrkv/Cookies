@@ -2,6 +2,7 @@ package main.entity;
 
 /**
  * Created by USER on 6/1/2017.
+ * Contains positions and a direction
  */
 public class Entity {
 	private double x = 0;

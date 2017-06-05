@@ -4,6 +4,7 @@ import main.entity.Entity;
 
 /**
  * Created by USER on 6/1/2017.
+ * Contains a move function along with a move check.
  */
 public class MovingEntity extends Entity {
 	public MovingEntity(double x, double y, double dir) {
