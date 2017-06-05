@@ -1,14 +1,13 @@
 package main;
 
 import main.display.Sprite;
-import main.entity.moving.Player;
-import main.entity.moving.enemy.meleeWalkingZombie;
+import main.entity.moving.character.Player;
+import main.entity.moving.character.enemy.meleeWalkingZombie;
 import main.keyboard.Key;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -56,13 +55,13 @@ public class Main {
 		glEnable (GL_BLEND); glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		keyboard = new Key();
-		player = new Player(100, 100, 0, 5);
-		zombie1 = new meleeWalkingZombie(300,300,0,1.5,player);
-		zombie2 = new meleeWalkingZombie(800,600,0,1,player);
-		zombie3 = new meleeWalkingZombie(200,900,0,1.5,player);
-		zombie4 = new meleeWalkingZombie(1000,-300,0,2.5,player);
-		zombie5 = new meleeWalkingZombie(1300,-400,0,1.5,player);
-		zombie6 = new meleeWalkingZombie(900,900,0,.5,player);
+		player = new Player(100, 100, 0, 5, 100);
+		zombie1 = new meleeWalkingZombie(300,300,0,1.5,100,player);
+		zombie2 = new meleeWalkingZombie(800,600,0,1,100,player);
+		zombie3 = new meleeWalkingZombie(200,900,0,1.5,100,player);
+		zombie4 = new meleeWalkingZombie(1000,-300,0,2.5,100,player);
+		zombie5 = new meleeWalkingZombie(1300,-400,0,1.5,100,player);
+		zombie6 = new meleeWalkingZombie(900,900,0,.5,100,player);
 	}
 
 	public void loop() {
