@@ -84,33 +84,15 @@ public class Main {
 
 	private void render() {
 //		Sprite.zombie.render(0, 0, 200, 200);
-        Sprite.mainCharacter.image.setCenterOfRotation(50, 50);
-        Sprite.mainCharacter.image.setRotation((float) (-player.getDir() * 180 / Math.PI) - 90);
-        Sprite.mainCharacter.render(player.getX() - 50, player.getY() - 50, 100, 100);
 
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie1.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie1.getX() - 50, zombie1.getY() - 50, 100, 100);
+		player.render();
 
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie2.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie2.getX() - 50, zombie2.getY() - 50, 100, 100);
-
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie3.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie3.getX() - 50, zombie3.getY() - 50, 100, 100);
-
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie4.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie4.getX() - 50, zombie4.getY() - 50, 100, 100);
-
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie5.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie5.getX() - 50, zombie5.getY() - 50, 100, 100);
-
-        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
-        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie6.getDir() * 180 / Math.PI) - 90);
-        Sprite.meleeWalkingZombie.render(zombie6.getX() - 50, zombie6.getY() - 50, 100, 100);
+        zombie1.render(100, 100);
+        zombie2.render(100, 100);
+        zombie3.render(100, 100);
+        zombie4.render(100, 100);
+        zombie5.render(100, 100);
+        zombie6.render(100, 100);
 
 
         Sprite.tile1.render(0, 0, 32, 32);
@@ -119,120 +101,6 @@ public class Main {
 		Sprite.tile4.render(0, 96, 32, 32);
 		Sprite.tile5.render(0, 128, 32, 32);
 		Sprite.tile6.render(0, 160, 32, 32);
-
-
-
-		//Char 1 begin
-		glLineWidth(2.5f);
-		glColor3f(0f, 0f, 1f);
-		glBegin(GL_LINES);
-		glVertex2d(player.getX(), player.getY());
-		glVertex2d(player.getX() + (Math.cos(player.getDir()) * 100),
-				player.getY() - (Math.sin(player.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + player.getX(), Math.sin(i) * 5 + player.getY());
-		glEnd();
-		glColor3f(0f, 0f, 0f);
-		//Char 1 end
-
-		//Char 2 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie1.getX(), zombie1.getY());
-		glVertex2d(zombie1.getX() + (Math.cos(zombie1.getDir()) * 100),
-                zombie1.getY() - (Math.sin(zombie1.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-            glVertex2d(Math.cos(i) * 5 + zombie1.getX(), Math.sin(i) * 5 + zombie1.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 2 end
-
-		//Char 3 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie2.getX(), zombie2.getY());
-		glVertex2d(zombie2.getX() + (Math.cos(zombie2.getDir()) * 100),
-				zombie2.getY() - (Math.sin(zombie2.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + zombie2.getX(), Math.sin(i) * 5 + zombie2.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 3 end
-
-		//Char 4 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie3.getX(), zombie3.getY());
-		glVertex2d(zombie1.getX() + (Math.cos(zombie3.getDir()) * 100),
-				zombie3.getY() - (Math.sin(zombie3.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + zombie3.getX(), Math.sin(i) * 5 + zombie3.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 4 end
-
-		//Char 5 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie4.getX(), zombie4.getY());
-		glVertex2d(zombie4.getX() + (Math.cos(zombie4.getDir()) * 100),
-				zombie4.getY() - (Math.sin(zombie4.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + zombie4.getX(), Math.sin(i) * 5 + zombie4.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 5 end
-
-		//Char 6 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie5.getX(), zombie5.getY());
-		glVertex2d(zombie5.getX() + (Math.cos(zombie5.getDir()) * 100),
-				zombie5.getY() - (Math.sin(zombie5.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + zombie5.getX(), Math.sin(i) * 5 + zombie5.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 6 end
-
-		//Char 7 begin
-		glLineWidth(2.5f);
-		glColor3f(1f, 0, 0f);
-		glBegin(GL_LINES);
-		glVertex2d(zombie6.getX(), zombie6.getY());
-		glVertex2d(zombie6.getX() + (Math.cos(zombie6.getDir()) * 100),
-				zombie6.getY() - (Math.sin(zombie6.getDir()) * 100));
-		glEnd();
-		glLineWidth(0.5f);
-		glBegin(GL_POLYGON);
-		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-			glVertex2d(Math.cos(i) * 5 + zombie6.getX(), Math.sin(i) * 5 + zombie6.getY());
-		glEnd();
-		glColor3f(1f, 1f, 1f);
-		//Char 7 end
 
 
 		totalFrames++;

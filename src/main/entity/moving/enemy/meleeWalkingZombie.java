@@ -1,5 +1,6 @@
 package main.entity.moving.enemy;
 
+import main.display.Sprite;
 import main.entity.moving.Player;
 
 /**
@@ -8,6 +9,8 @@ import main.entity.moving.Player;
 public class meleeWalkingZombie extends EnemyBase {
     public meleeWalkingZombie(double x, double y, double dir, double speed, Player player) {
         super(x,y,dir,speed,player);
+
+        setSprite(Sprite.meleeWalkingZombie);
     }
 
     public void selectMove() {

@@ -18,13 +18,15 @@ public class Entity {
 		this.dir = dir;
 	}
 
-	public boolean render(double x, double y) {
-		return render(x, y, (int) sprite.getImage().getWidth(), (int) sprite.getImage().getHeight());
+	public boolean render() {
+		return render(sprite.getImage().getWidth(), sprite.getImage().getHeight());
 	}
 
-	public boolean render(double x, double y, int width, int height) {
+	public boolean render(int width, int height) {
 		if (sprite != null) {
-			sprite.render(x, y, width, height);
+			sprite.image.setCenterOfRotation(width / 2f, height / 2f);
+			sprite.image.setRotation((float) (-dir * 180 / Math.PI) - 90);
+			sprite.render(x - width / 2.0, y - height / 2.0, width, height);
 		}
 		return sprite != null;
 	}
