@@ -161,6 +161,7 @@ public class Main {
 		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5);
 		if (keyboard.key[Keyboard.KEY_D]) player.move(0.0);
 
+		zombie1.chooseDirection();
 		zombie1.move(zombie1.getDir());
 
 
