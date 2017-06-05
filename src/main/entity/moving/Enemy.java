@@ -19,6 +19,10 @@ public class Enemy extends MovingEntity {
         return player1.getX();
     }
 
+    protected Player getPlayer() {
+        return player1;
+    }
+
     protected double getPlayerY() {
         return player1.getY();
     }

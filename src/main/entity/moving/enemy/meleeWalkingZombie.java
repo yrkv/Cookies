@@ -1,5 +1,6 @@
 package main.entity.moving.enemy;
 
+import main.entity.Entity;
 import main.entity.moving.Enemy;
 import main.entity.moving.Player;
 
@@ -12,25 +13,14 @@ public class meleeWalkingZombie extends Enemy {
     }
 
     public void selectMove() {
-        double px = getPlayerX();
-        double py = getPlayerY();
 
-        double dx = px - getX();
-        double dy = py - getY();
-
-        double slope = -dy/dx;
+        Entity.setDirFromTo(this,getPlayer());
 
         if (dx < 8 && dy < 8 && dx > -8 && dy > -8) {
             setSpeed(0);
         }
         else {
             setSpeed(1.5);
-        }
-
-        if(dx>0) {
-            setDir(Math.atan(slope));
-        } else if(dx<0) {
-            setDir(Math.PI+Math.atan(slope));
         }
     }
 }
