@@ -56,7 +56,7 @@ public class Main {
 		glMatrixMode(GL_MODELVIEW);
 
 		keyboard = new Key();
-		player = new Player(100, 100, 0, 5,keyboard);
+		player = new Player(100, 100, 0, 5);
 		zombie1 = new meleeWalkingZombie(300,300,0,1.5,player);
 	}
 
