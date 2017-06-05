@@ -10,6 +10,7 @@ public class Sprite {
 	private Texture texture;
 
 	public static final Sprite mainCharacter = new Sprite("res/mainCharacter.jpg");
+	public static final Sprite zombie = new Sprite("res/zombie.jpg");
 
 
 	/**

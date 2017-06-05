@@ -29,10 +29,12 @@ public class Main {
 	private long totalFrames = 0;
 	private long startTime;
 	private double t;
+	private int w, h;
 
 	public void start() throws IOException {
 		try {
-			Display.setDisplayMode(new DisplayMode(800,600));
+			w = 800; h = 600;
+			Display.setDisplayMode(new DisplayMode(w,h));
 			Display.create();
 		} catch (LWJGLException e) {
 			e.printStackTrace();
@@ -50,7 +52,7 @@ public class Main {
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, 800, 600, 0, 1, -1);
+		glOrtho(0, Display.getWidth(), Display.getHeight(), 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 
 		keyboard = new Key();
@@ -140,7 +142,8 @@ public class Main {
         glColor3f(1f, 1f, 1f);
         //Char 2 end
 
-		Sprite.mainCharacter.render(0, 0, 200, 400);
+		Sprite.zombie.render(0, 0, 200, 200);
+		Sprite.mainCharacter.render(300, 300, 200, 200);
 
 		totalFrames++;
 	}
@@ -159,8 +162,8 @@ public class Main {
 		double speed = 5.0 / d;
 
 		player.setSpeed(speed);
-		if (keyboard.key[Keyboard.KEY_W]) player.move( 0.5);
-		if (keyboard.key[Keyboard.KEY_A]) player.move( 1.0);
+		if (keyboard.key[Keyboard.KEY_W]) player.move(0.5);
+		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0);
 		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5);
 		if (keyboard.key[Keyboard.KEY_D]) player.move(0.0);
 
@@ -169,11 +172,11 @@ public class Main {
 
 
 		if (Mouse.getX() >= player.getX())
-			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
+			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
 		else
-			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
+			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
 
-		System.out.println("player x: " + player.getX() + " player y: " + player.getY() + " player dir: " + player.getDir() + "zombie1 x: " + zombie1.getX() + " zombie1 y: " + zombie1.getY()
-            + " zombie dir: " + zombie1.getDir());
+//		System.out.println("player x: " + player.getX() + " player y: " + player.getY() + " player dir: " + player.getDir() + "zombie1 x: " + zombie1.getX() + " zombie1 y: " + zombie1.getY()
+//            + " zombie dir: " + zombie1.getDir());
 	}
 }
