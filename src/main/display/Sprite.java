@@ -44,11 +44,11 @@ public class Sprite {
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glTexCoord2f(0,0);
 		GL11.glVertex2d(x,y);
-		GL11.glTexCoord2f(1,0);
+		GL11.glTexCoord2f(texture.getWidth(),0);
 		GL11.glVertex2d(x+width,y);
-		GL11.glTexCoord2f(1,1);
+		GL11.glTexCoord2f(texture.getWidth(),texture.getHeight());
 		GL11.glVertex2d(x+width,y+height);
-		GL11.glTexCoord2f(0,1);
+		GL11.glTexCoord2f(0,texture.getHeight());
 		GL11.glVertex2d(x,y+height);
 		GL11.glEnd();
 	}
