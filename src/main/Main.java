@@ -4,22 +4,15 @@ import main.display.Sprite;
 import main.entity.moving.Player;
 import main.entity.moving.enemy.meleeWalkingZombie;
 import main.keyboard.Key;
-import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
 
 import static org.lwjgl.opengl.GL11.*;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 public class Main {
 	private Player player;
@@ -171,12 +164,12 @@ public class Main {
 		double speed = 5.0 / d;
 
 		player.setSpeed(speed);
-		if (keyboard.key[Keyboard.KEY_W]) player.move(.5 * Math.PI);
+		if (keyboard.key[Keyboard.KEY_W]) player.move(1.5 * Math.PI);
 		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0 * Math.PI);
-		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5 * Math.PI);
+		if (keyboard.key[Keyboard.KEY_S]) player.move(.5 * Math.PI);
 		if (keyboard.key[Keyboard.KEY_D]) player.move(0);
 
-		zombie1.chooseDirection();
+		zombie1.selectMove();
 		zombie1.move(zombie1.getDir());
 
 		player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));

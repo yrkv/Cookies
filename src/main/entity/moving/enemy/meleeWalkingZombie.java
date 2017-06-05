@@ -11,7 +11,7 @@ public class meleeWalkingZombie extends Enemy {
         super(x,y,dir,speed,player);
     }
 
-    public void chooseDirection() {
+    public void selectMove() {
         double px = getPlayerX();
         double py = getPlayerY();
 
@@ -19,6 +19,10 @@ public class meleeWalkingZombie extends Enemy {
         double dy = py - getY();
 
         double slope = dy/dx;
+
+        if (dx == 0 && dy == 0) {
+            setSpeed(0);
+        }
 
         if(dx>0) {
             setDir(Math.atan(slope));
