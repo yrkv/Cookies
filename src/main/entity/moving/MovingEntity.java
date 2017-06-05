@@ -15,6 +15,11 @@ public class MovingEntity extends Entity {
 		speed = spd;
 	}
 
+	public MovingEntity(double x, double y, double dir) {
+		super(x,y,dir);
+		speed = 0.0;
+	}
+
 	// TODO: implement checking if a moving main.entity can move in a direction
 	public boolean canMove(double dir) {
 		return true;

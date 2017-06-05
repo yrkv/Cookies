@@ -55,7 +55,7 @@ public class Main {
 
 		keyboard = new Key();
 		player = new Player(100, 100, 0, 5);
-		zombie1 = new meleeWalkingZombie(800,800,0,3,player);
+		zombie1 = new meleeWalkingZombie(800,800,0,1.5,player);
 	}
 
 	public void loop() {

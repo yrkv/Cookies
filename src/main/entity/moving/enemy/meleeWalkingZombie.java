@@ -15,6 +15,12 @@ public class meleeWalkingZombie extends Enemy {
         double dX = getPlayerX() - getX();
         double dY = getPlayerY() - getY();
 
+        if(dX < 10 && dY < 10) {
+            setSpeed(0);
+        } else {
+            setSpeed(1.5);
+        }
+
         if(dX == 0) {
             if(dY > 0) {
                 setDir(0.5);
