@@ -121,7 +121,7 @@ public class Main {
 
 		//Char 1 begin
 		glLineWidth(2.5f);
-		glColor3f(1f, 1f, 0f);
+		glColor3f(0f, 0f, 1f);
 		glBegin(GL_LINES);
 		glVertex2d(player.getX(), player.getY());
 		glVertex2d(player.getX() + (Math.cos(player.getDir()) * 100),

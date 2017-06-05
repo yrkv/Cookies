@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.opengl.Texture;
 
 public class Sprite {
-	private Image image;
+	public Image image;
 
 	public static final Sprite mainCharacter = new Sprite("res/mainCharacter.jpg");
 	public static final Sprite zombie = new Sprite("res/zombie.jpg");
