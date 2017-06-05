@@ -28,7 +28,7 @@ public class MovingEntity extends Entity {
 	public void move(double dir) {
 		if(canMove(dir)) {
 			setX(getX() + speed * Math.cos(dir));
-			setY(getY() + speed * Math.sin(dir));
+			setY(getY() - speed * Math.sin(dir));
 		}
 	}
 

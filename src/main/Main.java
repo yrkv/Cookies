@@ -164,10 +164,11 @@ public class Main {
 		double speed = 5.0 / d;
 
 		player.setSpeed(speed);
-		if (keyboard.key[Keyboard.KEY_W]) player.move(1.5 * Math.PI);
-		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0 * Math.PI);
-		if (keyboard.key[Keyboard.KEY_S]) player.move(.5 * Math.PI);
-		if (keyboard.key[Keyboard.KEY_D]) player.move(0);
+		if (keyboard.key[Keyboard.KEY_W]) player.move(player.getDir());
+//		if (keyboard.key[Keyboard.KEY_W]) player.move(0.5 * Math.PI);
+//		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0 * Math.PI);
+//		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5 * Math.PI);
+//		if (keyboard.key[Keyboard.KEY_D]) player.move(0);
 
 		zombie1.selectMove();
 		zombie1.move(zombie1.getDir());
@@ -175,5 +176,7 @@ public class Main {
 		player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));
 		if (Mouse.getX() < player.getX())
 			player.setDir(player.getDir() + Math.PI);
+
+		System.out.printf("%.2f\n", (player.getDir() / Math.PI));
 	}
 }
