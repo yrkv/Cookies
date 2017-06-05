@@ -13,6 +13,6 @@ public class meleeWalkingZombie extends Enemy {
     }
 
     public void selectMove() {
-        Entity.setDirTowards(this,getPlayer());
+        setDirTowards(getPlayer());
     }
 }

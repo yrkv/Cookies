@@ -79,4 +79,9 @@ public class Entity {
 		setDir(direction);
 		return direction;
 	}
+	//TODO: use tile coords for directioning
+	public double setDirTowardsTile(int x, int y) {
+		double direction = 0;
+		return direction;
+	}
 }
