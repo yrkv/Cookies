@@ -1,4 +1,4 @@
-package main.entity.moving.Enemy;
+package main.entity.moving;
 
 import main.entity.moving.MovingEntity;
 import main.entity.moving.Player;
@@ -15,6 +15,12 @@ public class Enemy extends MovingEntity {
         player1 = player;
     }
 
-    protected
+    protected double getPlayerX() {
+
+    }
+
+    protected double getPlayerY() {
+
+    }
 
 }

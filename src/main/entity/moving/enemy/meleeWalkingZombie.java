@@ -1,6 +1,6 @@
-package main.entity.moving.Enemy;
+package main.entity.moving.enemy;
 
-import main.entity.moving.MovingEntity;
+import main.entity.moving.Enemy;
 import main.entity.moving.Player;
 
 /**
