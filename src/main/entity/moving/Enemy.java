@@ -10,8 +10,8 @@ public class Enemy extends MovingEntity {
 
     Player player1;
 
-    public Enemy(double x, double y, double dir, Player player) {
-        super(x,y,dir);
+    public Enemy(double x, double y, double dir, double spd, Player player) {
+        super(x,y,dir,spd);
         player1 = player;
     }
 
