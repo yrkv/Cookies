@@ -20,7 +20,7 @@ public class meleeWalkingZombie extends Enemy {
 
         double slope = -dy/dx;
 
-        if (dx == 0 && dy == 0) {
+        if (dx < 8 && dy < 8 && dx > -8 && dy > -8) {
             setSpeed(0);
         }
         else {
