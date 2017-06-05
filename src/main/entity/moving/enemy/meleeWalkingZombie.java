@@ -20,9 +20,8 @@ public class meleeWalkingZombie extends Enemy {
 
         double slope = -dy/dx;
 
-        if (dx == 0 && dy == 0) {
+        if (dx == 0 && dy == 0)
             setSpeed(0);
-        }
 
         if(dx>0) {
             setDir(Math.atan(slope));
