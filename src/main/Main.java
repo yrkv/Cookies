@@ -144,12 +144,12 @@ public class Main {
 
 //		Sprite.zombie.render(0, 0, 200, 200);
 //		Sprite.mainCharacter.render(300, 300, 200, 200);
-//		Sprite.tile1.render(0, 0, 32, 32);
-//		Sprite.tile2.render(0, 32, 32, 32);
-//		Sprite.tile3.render(0, 64, 32, 32);
-//		Sprite.tile4.render(0, 96, 32, 32);
-//		Sprite.tile5.render(0, 128, 32, 32);
-//		Sprite.tile6.render(0, 160, 32, 32);
+		Sprite.tile1.render(0, 0, 32, 32);
+		Sprite.tile2.render(0, 32, 32, 32);
+		Sprite.tile3.render(0, 64, 32, 32);
+		Sprite.tile4.render(0, 96, 32, 32);
+		Sprite.tile5.render(0, 128, 32, 32);
+		Sprite.tile6.render(0, 160, 32, 32);
 
 		totalFrames++;
 	}
