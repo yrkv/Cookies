@@ -12,38 +12,18 @@ public class meleeWalkingZombie extends Enemy {
     }
 
     public void chooseDirection() {
-        double dX = getPlayerX() - getX();
-        double dY = getPlayerY() - getY();
+        double px = getPlayerX();
+        double py = getPlayerY();
 
-        if(dX < 10 && dY < 10) {
-            setSpeed(0);
-        } else {
-            setSpeed(1.5);
+        double dx = px - getX();
+        double dy = py - getY();
+
+        double slope = dy/dx;
+
+        if(dx>0) {
+            setDir(Math.atan(slope));
+        } else if(dx<0) {
+            setDir(Math.PI+Math.atan(slope));
         }
-
-        if(dX == 0) {
-            if(dY > 0) {
-                setDir(0.5);
-                return;
-            }
-            else if(dY < 0) {
-                setDir(1.5);
-                return;
-            }
-        }
-
-        if(dY == 0) {
-            if(dX > 0) {
-                setDir(0.0);
-                return;
-            }
-            else if(dX < 0) {
-                setDir(1.0);
-                return;
-            }
-
-        }
-
-        setDir(Math.atan((dY/dX)));
     }
 }

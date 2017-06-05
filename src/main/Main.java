@@ -57,7 +57,7 @@ public class Main {
 
 		keyboard = new Key();
 		player = new Player(100, 100, 0, 5);
-		zombie1 = new meleeWalkingZombie(800,800,0,1.5,player);
+		zombie1 = new meleeWalkingZombie(300,300,0,1.5,player);
 	}
 
 	public void loop() {
@@ -176,13 +176,9 @@ public class Main {
 		zombie1.chooseDirection();
 		zombie1.move(zombie1.getDir());
 
-
 		if (Mouse.getX() >= player.getX())
 			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
 		else
 			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
-
-//		System.out.println("player x: " + player.getX() + " player y: " + player.getY() + " player dir: " + player.getDir() + "zombie1 x: " + zombie1.getX() + " zombie1 y: " + zombie1.getY()
-//            + " zombie dir: " + zombie1.getDir());
 	}
 }
