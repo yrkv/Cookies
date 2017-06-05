@@ -110,8 +110,17 @@ public class Main {
 	}
 
 	private void render() {
+//		Sprite.zombie.render(0, 0, 200, 200);
+//		Sprite.mainCharacter.render(300, 300, 200, 200);
+		Sprite.tile1.render(0, 0, 32, 32);
+		Sprite.tile2.render(0, 32, 32, 32);
+		Sprite.tile3.render(0, 64, 32, 32);
+		Sprite.tile4.render(0, 96, 32, 32);
+		Sprite.tile5.render(0, 128, 32, 32);
+		Sprite.tile6.render(0, 160, 32, 32);
+
 		//Char 1 begin
-	    glLineWidth(2.5f);
+		glLineWidth(2.5f);
 		glColor3f(1f, 1f, 0f);
 		glBegin(GL_LINES);
 		glVertex2d(player.getX(), player.getY());
@@ -126,30 +135,22 @@ public class Main {
 		glColor3f(0f, 0f, 0f);
 		//Char 1 end
 
-        //Char 2 begin
-        glLineWidth(2.5f);
-        glColor3f(1f, 0, 0f);
-        glBegin(GL_LINES);
-        glVertex2d(zombie1.getX(), zombie1.getY());
-        glVertex2d(zombie1.getX() + (Math.cos(zombie1.getDir()) * 100),
+		//Char 2 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie1.getX(), zombie1.getY());
+		glVertex2d(zombie1.getX() + (Math.cos(zombie1.getDir()) * 100),
                 zombie1.getY() + (Math.sin(zombie1.getDir()) * 100));
-        glEnd();
-        glLineWidth(0.5f);
-        glBegin(GL_POLYGON);
-        for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
             glVertex2d(Math.cos(i) * 5 + zombie1.getX(), Math.sin(i) * 5 + zombie1.getY());
-        glEnd();
-        glColor3f(1f, 1f, 1f);
-        //Char 2 end
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 2 end
 
-//		Sprite.zombie.render(0, 0, 200, 200);
-//		Sprite.mainCharacter.render(300, 300, 200, 200);
-		Sprite.tile1.render(0, 0, 32, 32);
-		Sprite.tile2.render(0, 32, 32, 32);
-		Sprite.tile3.render(0, 64, 32, 32);
-		Sprite.tile4.render(0, 96, 32, 32);
-		Sprite.tile5.render(0, 128, 32, 32);
-		Sprite.tile6.render(0, 160, 32, 32);
 
 		totalFrames++;
 	}
