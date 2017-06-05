@@ -27,7 +27,7 @@ public class meleeWalkingZombie extends Enemy {
         if(dx>0) {
             setDir(Math.atan(slope));
         } else if(dx<0) {
-            setDir(Math.PI+Math.atan(slope));
+            setDir(Math.PI-Math.atan(slope));
         }
     }
 }
