@@ -56,7 +56,7 @@ public class Main {
 		glMatrixMode(GL_MODELVIEW);
 
 		keyboard = new Key();
-		player = new Player(100, 100, 0, 5);
+		player = new Player(100, 100, 0, 5,keyboard);
 		zombie1 = new meleeWalkingZombie(300,300,0,1.5,player);
 	}
 
@@ -168,10 +168,10 @@ public class Main {
 		double speed = 5.0 / d;
 
 		player.setSpeed(speed);
-		if (keyboard.key[Keyboard.KEY_W]) player.move(0.5);
-		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0);
-		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5);
-		if (keyboard.key[Keyboard.KEY_D]) player.move(0.0);
+		if (keyboard.key[Keyboard.KEY_W]) player.move(.5 * Math.PI);
+		if (keyboard.key[Keyboard.KEY_A]) player.move(1.0 * Math.PI);
+		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5 * Math.PI);
+		if (keyboard.key[Keyboard.KEY_D]) player.move(0);
 
 		zombie1.chooseDirection();
 		zombie1.move(zombie1.getDir());
