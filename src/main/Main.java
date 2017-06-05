@@ -51,7 +51,7 @@ public class Main {
 		glMatrixMode(GL_MODELVIEW);
 
 		keyboard = new Key();
-		player = new Player(100, 100, 0);
+		player = new Player(100, 100, 0, 5);
 	}
 
 	public void loop() {
@@ -133,10 +133,11 @@ public class Main {
 		double d = (keyboard.getKeysPressed() % 2 == 0) ? Math.sqrt(2.0) : 1;
 		double speed = 5.0 / d;
 
-		if (keyboard.key[Keyboard.KEY_W]) player.move(speed, 0.5);
-		if (keyboard.key[Keyboard.KEY_A]) player.move(speed, 1.0);
-		if (keyboard.key[Keyboard.KEY_S]) player.move(speed, 1.5);
-		if (keyboard.key[Keyboard.KEY_D]) player.move(speed, 0.0);
+		player.setSpeed(speed);
+		if (keyboard.key[Keyboard.KEY_W]) player.move( 0.5);
+		if (keyboard.key[Keyboard.KEY_A]) player.move( 1.0);
+		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5);
+		if (keyboard.key[Keyboard.KEY_D]) player.move(0.0);
 
 
 		if (Mouse.getX() >= player.getX())
