@@ -17,6 +17,11 @@ import java.io.IOException;
 public class Main {
 	private Player player;
 	private meleeWalkingZombie zombie1;
+	private meleeWalkingZombie zombie2;
+	private meleeWalkingZombie zombie3;
+	private meleeWalkingZombie zombie4;
+	private meleeWalkingZombie zombie5;
+	private meleeWalkingZombie zombie6;
 	private Key keyboard;
 
 	private long totalFrames = 0;
@@ -52,6 +57,11 @@ public class Main {
 		keyboard = new Key();
 		player = new Player(100, 100, 0, 5);
 		zombie1 = new meleeWalkingZombie(300,300,0,1.5,player);
+		zombie2 = new meleeWalkingZombie(800,600,0,1,player);
+		zombie3 = new meleeWalkingZombie(200,900,0,1.5,player);
+		zombie4 = new meleeWalkingZombie(1000,-300,0,2.5,player);
+		zombie5 = new meleeWalkingZombie(1300,-400,0,1.5,player);
+		zombie6 = new meleeWalkingZombie(900,900,0,.5,player);
 	}
 
 	public void loop() {
@@ -117,6 +127,86 @@ public class Main {
 		glColor3f(1f, 1f, 1f);
 		//Char 2 end
 
+		//Char 3 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie2.getX(), zombie2.getY());
+		glVertex2d(zombie2.getX() + (Math.cos(zombie2.getDir()) * 100),
+				zombie2.getY() - (Math.sin(zombie2.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + zombie2.getX(), Math.sin(i) * 5 + zombie2.getY());
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 3 end
+
+		//Char 4 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie3.getX(), zombie3.getY());
+		glVertex2d(zombie1.getX() + (Math.cos(zombie3.getDir()) * 100),
+				zombie3.getY() - (Math.sin(zombie3.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + zombie3.getX(), Math.sin(i) * 5 + zombie3.getY());
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 4 end
+
+		//Char 5 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie4.getX(), zombie4.getY());
+		glVertex2d(zombie4.getX() + (Math.cos(zombie4.getDir()) * 100),
+				zombie4.getY() - (Math.sin(zombie4.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + zombie4.getX(), Math.sin(i) * 5 + zombie4.getY());
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 5 end
+
+		//Char 6 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie5.getX(), zombie5.getY());
+		glVertex2d(zombie5.getX() + (Math.cos(zombie5.getDir()) * 100),
+				zombie5.getY() - (Math.sin(zombie5.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + zombie5.getX(), Math.sin(i) * 5 + zombie5.getY());
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 6 end
+
+		//Char 7 begin
+		glLineWidth(2.5f);
+		glColor3f(1f, 0, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(zombie6.getX(), zombie6.getY());
+		glVertex2d(zombie6.getX() + (Math.cos(zombie6.getDir()) * 100),
+				zombie6.getY() - (Math.sin(zombie6.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + zombie6.getX(), Math.sin(i) * 5 + zombie6.getY());
+		glEnd();
+		glColor3f(1f, 1f, 1f);
+		//Char 7 end
+
 
 		totalFrames++;
 	}
@@ -142,6 +232,16 @@ public class Main {
 
 		zombie1.selectMove();
 		zombie1.move(zombie1.getDir());
+		zombie2.selectMove();
+		zombie2.move(zombie2.getDir());
+		zombie3.selectMove();
+		zombie3.move(zombie3.getDir());
+		zombie4.selectMove();
+		zombie4.move(zombie4.getDir());
+		zombie5.selectMove();
+		zombie5.move(zombie5.getDir());
+		zombie6.selectMove();
+		zombie6.move(zombie6.getDir());
 
 		player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));
 		if (Mouse.getX() < player.getX())
