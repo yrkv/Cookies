@@ -1,6 +1,7 @@
 package main;
 
 import main.entity.moving.Player;
+import main.entity.moving.enemy.meleeWalkingZombie;
 import main.keyboard.Key;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.LWJGLException;
@@ -21,6 +22,7 @@ import java.nio.ByteBuffer;
 
 public class Main {
 	private Player player;
+	private meleeWalkingZombie zombie1;
 	private Key keyboard;
 
 	private long totalFrames = 0;
@@ -52,6 +54,7 @@ public class Main {
 
 		keyboard = new Key();
 		player = new Player(100, 100, 0, 5);
+		zombie1 = new meleeWalkingZombie(800,800,0,3,player);
 	}
 
 	public void loop() {
@@ -104,7 +107,8 @@ public class Main {
 	}
 
 	private void render() {
-		glLineWidth(2.5f);
+		//Char 1 begin
+	    glLineWidth(2.5f);
 		glColor3f(1f, 1f, 0f);
 		glBegin(GL_LINES);
 		glVertex2d(player.getX(), player.getY());
@@ -117,6 +121,24 @@ public class Main {
 			glVertex2d(Math.cos(i) * 5 + player.getX(), Math.sin(i) * 5 + player.getY());
 		glEnd();
 		glColor3f(0f, 0f, 0f);
+		//Char 1 end
+
+        //Char 2 begin
+        glLineWidth(2.5f);
+        glColor3f(1f, 0, 0f);
+        glBegin(GL_LINES);
+        glVertex2d(zombie1.getX(), zombie1.getY());
+        glVertex2d(zombie1.getX() + (Math.cos(zombie1.getDir()) * 100),
+                zombie1.getY() + (Math.sin(zombie1.getDir()) * 100));
+        glEnd();
+        glLineWidth(0.5f);
+        glBegin(GL_POLYGON);
+        for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+            glVertex2d(Math.cos(i) * 5 + zombie1.getX(), Math.sin(i) * 5 + zombie1.getY());
+        glEnd();
+        glColor3f(0f, 0f, 0f);
+        //Char 2 end
+
 		totalFrames++;
 	}
 
@@ -139,10 +161,15 @@ public class Main {
 		if (keyboard.key[Keyboard.KEY_S]) player.move(1.5);
 		if (keyboard.key[Keyboard.KEY_D]) player.move(0.0);
 
+		zombie1.move(zombie1.getDir());
+
 
 		if (Mouse.getX() >= player.getX())
 			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
 		else
 			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
+
+		System.out.println("player x: " + player.getX() + " player y: " + player.getY() + " player dir: " + player.getDir() + "zombie1 x: " + zombie1.getX() + " zombie1 y: " + zombie1.getY()
+            + " zombie dir: " + zombie1.getDir());
 	}
 }
