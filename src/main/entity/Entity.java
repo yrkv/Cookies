@@ -1,18 +1,36 @@
 package main.entity;
 
+import main.display.Sprite;
+
 /**
- * Created by USER on 6/1/2017.
+ * Created by Yegor Kuznetsov on 6/1/2017.
  * Contains positions and a direction
  */
 public class Entity {
 	private double x = 0;
 	private double y = 0;
 	private double dir = 0;
+	private Sprite sprite = null;
 
 	public Entity(double x, double y, double dir) {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+	}
+
+	public boolean render(double x, double y) {
+		return render(x, y, (int) sprite.getTexture().getWidth(), (int) sprite.getTexture().getHeight());
+	}
+
+	public boolean render(double x, double y, int width, int height) {
+		if (sprite != null) {
+			sprite.render(x, y, width, height);
+		}
+		return sprite != null;
+	}
+
+	protected void setSprite(Sprite sprite) {
+		this.sprite = sprite;
 	}
 
 	public double getX() {

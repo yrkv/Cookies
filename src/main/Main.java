@@ -1,5 +1,6 @@
 package main;
 
+import main.display.Sprite;
 import main.entity.moving.Player;
 import main.entity.moving.enemy.meleeWalkingZombie;
 import main.keyboard.Key;
@@ -49,7 +50,7 @@ public class Main {
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, 800, 0, 600, 1, -1);
+		glOrtho(0, 800, 600, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 
 		keyboard = new Key();
@@ -136,8 +137,10 @@ public class Main {
         for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
             glVertex2d(Math.cos(i) * 5 + zombie1.getX(), Math.sin(i) * 5 + zombie1.getY());
         glEnd();
-        glColor3f(0f, 0f, 0f);
+        glColor3f(1f, 1f, 1f);
         //Char 2 end
+
+		Sprite.mainCharacter.render(0, 0, 200, 400);
 
 		totalFrames++;
 	}
