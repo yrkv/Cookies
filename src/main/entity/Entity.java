@@ -57,11 +57,11 @@ public class Entity {
 		this.dir = dir;
 	}
 
-	public double setDirFromTo(Entity from, Entity to) {
+	public double setDirTowards(Entity to) {
 		double direction;
 
-		double fx = from.getX();
-		double fy = from.getY();
+		double fx = getX();
+		double fy = getY();
 		double tx = to.getX();
 		double ty = to.getY();
 
@@ -76,7 +76,7 @@ public class Entity {
 			direction = Math.PI + Math.atan(slope);
 		}
 
-		from.setDir(direction);
+		setDir(direction);
 		return direction;
 	}
 }
