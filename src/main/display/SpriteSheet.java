@@ -7,7 +7,9 @@ class SpriteSheet {
 	private int width, height;
 	org.newdawn.slick.SpriteSheet sheet;
 
-	public SpriteSheet(String path) throws SlickException {
+	public static final SpriteSheet tiles = new SpriteSheet("res/tiles.jpg");
+
+	public SpriteSheet(String path)  {
 		Image image = null;
 		try {
 			image = new Image(path);
@@ -18,8 +20,7 @@ class SpriteSheet {
 			width = image.getWidth();
 			height = image.getHeight();
 			sheet = new org.newdawn.slick.SpriteSheet(image, 32, 32);
-		} else
-			throw new SlickException("fuck"); // TODO: change this.
+		}
 	}
 
 	public int getWidth() {

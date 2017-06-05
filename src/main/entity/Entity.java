@@ -19,7 +19,7 @@ public class Entity {
 	}
 
 	public boolean render(double x, double y) {
-		return render(x, y, (int) sprite.getTexture().getWidth(), (int) sprite.getTexture().getHeight());
+		return render(x, y, (int) sprite.getImage().getWidth(), (int) sprite.getImage().getHeight());
 	}
 
 	public boolean render(double x, double y, int width, int height) {
