@@ -85,7 +85,7 @@ public class Main {
 	private void render() {
 //		Sprite.zombie.render(0, 0, 200, 200);
 		Sprite.mainCharacter.image.setCenterOfRotation(50, 50);
-		Sprite.mainCharacter.image.rotate((float) player.getDir());
+		Sprite.mainCharacter.image.setRotation((float) (-player.getDir() * 180 / Math.PI));
 		Sprite.mainCharacter.render(player.getX() - 50, player.getY() - 50, 100, 100);
 		Sprite.tile1.render(0, 0, 32, 32);
 		Sprite.tile2.render(0, 32, 32, 32);
