@@ -175,7 +175,5 @@ public class Main {
 		player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));
 		if (Mouse.getX() < player.getX())
 			player.setDir(player.getDir() + Math.PI);
-
-		System.out.printf("%.2f\n", (player.getDir() / Math.PI));
 	}
 }

@@ -18,7 +18,7 @@ public class meleeWalkingZombie extends Enemy {
         double dx = px - getX();
         double dy = py - getY();
 
-        double slope = dy/dx;
+        double slope = -dy/dx;
 
         if (dx == 0 && dy == 0) {
             setSpeed(0);
