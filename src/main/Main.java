@@ -84,11 +84,37 @@ public class Main {
 
 	private void render() {
 //		Sprite.zombie.render(0, 0, 200, 200);
-		Sprite.mainCharacter.image.setCenterOfRotation(50, 50);
-		Sprite.mainCharacter.image.setRotation((float) (-player.getDir() * 180 / Math.PI) - 90);
-		Sprite.mainCharacter.render(player.getX() - 50, player.getY() - 50, 100, 100);
-		Sprite.tile1.render(0, 0, 32, 32);
-		Sprite.tile2.render(0, 32, 32, 32);
+        Sprite.mainCharacter.image.setCenterOfRotation(50, 50);
+        Sprite.mainCharacter.image.setRotation((float) (-player.getDir() * 180 / Math.PI) - 90);
+        Sprite.mainCharacter.render(player.getX() - 50, player.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie1.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie1.getX() - 50, zombie1.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie2.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie2.getX() - 50, zombie2.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie3.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie3.getX() - 50, zombie3.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie4.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie4.getX() - 50, zombie4.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie5.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie5.getX() - 50, zombie5.getY() - 50, 100, 100);
+
+        Sprite.meleeWalkingZombie.image.setCenterOfRotation(50, 50);
+        Sprite.meleeWalkingZombie.image.setRotation((float) (-zombie6.getDir() * 180 / Math.PI) - 90);
+        Sprite.meleeWalkingZombie.render(zombie6.getX() - 50, zombie6.getY() - 50, 100, 100);
+
+
+        Sprite.tile1.render(0, 0, 32, 32);
+        Sprite.tile2.render(0, 32, 32, 32);
 		Sprite.tile3.render(0, 64, 32, 32);
 		Sprite.tile4.render(0, 96, 32, 32);
 		Sprite.tile5.render(0, 128, 32, 32);
