@@ -56,42 +56,42 @@ public class Main {
 
 	public void loop() {
 		int texID = glGenTextures();
-
-		ByteBuffer bb = BufferUtils.createByteBuffer(Display.getWidth()*Display.getHeight()*3);
-
-		for (int i = 0; i < Display.getWidth(); i++) {
-			for (int j = 0; j < Display.getHeight(); j++) {
-				bb.put((byte) 0x00);
-				bb.put((byte) 0x00);
-				bb.put((byte) 0x00);
-//				bb.put((byte) 0x00);
-			}
-		}
-		bb.flip();
-
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-
+//		ByteBuffer bb = BufferUtils.createByteBuffer(Display.getWidth()*Display.getHeight()*3);
+//
+//		for (int i = 0; i < Display.getWidth(); i++) {
+//			for (int j = 0; j < Display.getHeight(); j++) {
+//				bb.put((byte) 0xff);
+//				bb.put((byte) 0xff);
+//				bb.put((byte) 0xff);
+////				bb.put((byte) 0x00);
+//			}
+//		}
+//		bb.flip();
+//
+//		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+//		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		t = startTime = System.currentTimeMillis();
 
 		while (!Display.isCloseRequested()) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Display.getWidth(), Display.getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, bb);
+//			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Display.getWidth(), Display.getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, bb);
 
-			glBegin(GL_QUADS);
-				glTexCoord2f(0,0);
-				glVertex2f(0,0);
+//			glBegin(GL_QUADS);
+//				glTexCoord2f(0,0);
+//				glVertex2f(0,0);
+//
+//				glTexCoord2f(1,0);
+//				glVertex2f(Display.getWidth(),0);
+//
+//				glTexCoord2f(1,1);
+//				glVertex2f(Display.getWidth(),Display.getHeight());
+//
+//				glTexCoord2f(0,1);
+//				glVertex2f(0,Display.getHeight());
+//			glEnd();
 
-				glTexCoord2f(1,0);
-				glVertex2f(Display.getWidth(),0);
-
-				glTexCoord2f(1,1);
-				glVertex2f(Display.getWidth(),Display.getHeight());
-
-				glTexCoord2f(0,1);
-				glVertex2f(0,Display.getHeight());
-			glEnd();
+			render();
 
 			totalFrames++;
 			run();
@@ -103,14 +103,22 @@ public class Main {
 		new Main().start();
 	}
 
-//	private void render(Graphics g) {
-//		g.drawOval((int) player.getX() - 5, (int) player.getY() - 5, 10, 10);
-//		g.drawLine((int) player.getX(),
-//				(int) player.getY(),
-//				(int) player.getX() + (int) (Math.cos(player.getDir()) * 100),
-//				(int) player.getY() + (int) (Math.sin(player.getDir()) * 100));
-//		totalFrames++;
-//	}
+	private void render() {
+		glLineWidth(2.5f);
+		glColor3f(1f, 1f, 0f);
+		glBegin(GL_LINES);
+		glVertex2d(player.getX(), player.getY());
+		glVertex2d(player.getX() + (Math.cos(player.getDir()) * 100),
+				player.getY() + (Math.sin(player.getDir()) * 100));
+		glEnd();
+		glLineWidth(0.5f);
+		glBegin(GL_POLYGON);
+		for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
+			glVertex2d(Math.cos(i) * 5 + player.getX(), Math.sin(i) * 5 + player.getY());
+		glEnd();
+		glColor3f(0f, 0f, 0f);
+		totalFrames++;
+	}
 
 	private void run() {
 		keyboard.update();
@@ -122,10 +130,14 @@ public class Main {
 	}
 
 	private void update() {
-		if (keyboard.key[Keyboard.KEY_W]) player.move(5, 0.5*Math.PI);
-		if (keyboard.key[Keyboard.KEY_A]) player.move(5, 1.0*Math.PI);
-		if (keyboard.key[Keyboard.KEY_S]) player.move(5, 1.5*Math.PI);
-		if (keyboard.key[Keyboard.KEY_D]) player.move(5, 0.0*Math.PI);
+		double d = (keyboard.getKeysPressed() % 2 == 0) ? Math.sqrt(2.0) : 1;
+		double speed = 5.0 / d;
+
+		if (keyboard.key[Keyboard.KEY_W]) player.move(speed, 0.5);
+		if (keyboard.key[Keyboard.KEY_A]) player.move(speed, 1.0);
+		if (keyboard.key[Keyboard.KEY_S]) player.move(speed, 1.5);
+		if (keyboard.key[Keyboard.KEY_D]) player.move(speed, 0.0);
+
 
 		if (Mouse.getX() >= player.getX())
 			player.setDir(Math.atan((Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
