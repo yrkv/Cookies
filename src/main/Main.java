@@ -26,9 +26,10 @@ public class Main {
 
 	public void start() throws IOException {
 		try {
-			w = 800; h = 600;
-			Display.setDisplayMode(new DisplayMode(w,h));
+			Display.setDisplayMode(Display.getDesktopDisplayMode());
+			Display.setFullscreen(true);
 			Display.create();
+			w = Display.getWidth(); h = Display.getHeight();
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -54,41 +55,10 @@ public class Main {
 	}
 
 	public void loop() {
-		int texID = glGenTextures();
-//		ByteBuffer bb = BufferUtils.createByteBuffer(Display.getWidth()*Display.getHeight()*3);
-//
-//		for (int i = 0; i < Display.getWidth(); i++) {
-//			for (int j = 0; j < Display.getHeight(); j++) {
-//				bb.put((byte) 0xff);
-//				bb.put((byte) 0xff);
-//				bb.put((byte) 0xff);
-////				bb.put((byte) 0x00);
-//			}
-//		}
-//		bb.flip();
-//
-//		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-//		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		t = startTime = System.currentTimeMillis();
 
 		while (!Display.isCloseRequested()) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-//			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Display.getWidth(), Display.getHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, bb);
-
-//			glBegin(GL_QUADS);
-//				glTexCoord2f(0,0);
-//				glVertex2f(0,0);
-//
-//				glTexCoord2f(1,0);
-//				glVertex2f(Display.getWidth(),0);
-//
-//				glTexCoord2f(1,1);
-//				glVertex2f(Display.getWidth(),Display.getHeight());
-//
-//				glTexCoord2f(0,1);
-//				glVertex2f(0,Display.getHeight());
-//			glEnd();
 
 			render();
 
