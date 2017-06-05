@@ -119,13 +119,15 @@ public class Main {
 		Sprite.tile5.render(0, 128, 32, 32);
 		Sprite.tile6.render(0, 160, 32, 32);
 
+
+
 		//Char 1 begin
 		glLineWidth(2.5f);
 		glColor3f(0f, 0f, 1f);
 		glBegin(GL_LINES);
 		glVertex2d(player.getX(), player.getY());
 		glVertex2d(player.getX() + (Math.cos(player.getDir()) * 100),
-				player.getY() + (Math.sin(player.getDir()) * 100));
+				player.getY() - (Math.sin(player.getDir()) * 100));
 		glEnd();
 		glLineWidth(0.5f);
 		glBegin(GL_POLYGON);
@@ -141,7 +143,7 @@ public class Main {
 		glBegin(GL_LINES);
 		glVertex2d(zombie1.getX(), zombie1.getY());
 		glVertex2d(zombie1.getX() + (Math.cos(zombie1.getDir()) * 100),
-                zombie1.getY() + (Math.sin(zombie1.getDir()) * 100));
+                zombie1.getY() - (Math.sin(zombie1.getDir()) * 100));
 		glEnd();
 		glLineWidth(0.5f);
 		glBegin(GL_POLYGON);
@@ -177,9 +179,8 @@ public class Main {
 		zombie1.chooseDirection();
 		zombie1.move(zombie1.getDir());
 
-		if (Mouse.getX() >= player.getX())
-			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())));
-		else
-			player.setDir(Math.atan((h - Mouse.getY() - player.getY()) / (Mouse.getX() - player.getX())) + Math.PI);
+		player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));
+		if (Mouse.getX() < player.getX())
+			player.setDir(player.getDir() + Math.PI);
 	}
 }
