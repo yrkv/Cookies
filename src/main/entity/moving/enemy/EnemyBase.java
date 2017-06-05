@@ -1,4 +1,4 @@
-package main.entity.moving;
+package main.entity.moving.enemy;
 
 import main.entity.moving.MovingEntity;
 import main.entity.moving.Player;
@@ -6,11 +6,11 @@ import main.entity.moving.Player;
 /**
  * Created by Kaleb on 6/4/2017.
  */
-public class Enemy extends MovingEntity {
+public class EnemyBase extends MovingEntity {
 
     Player player1;
 
-    public Enemy(double x, double y, double dir, double spd, Player player) {
+    public EnemyBase(double x, double y, double dir, double spd, Player player) {
         super(x,y,dir,spd);
         player1 = player;
     }
