@@ -14,4 +14,7 @@ public class Enemy extends MovingEntity {
         super(x,y,dir);
         player1 = player;
     }
+
+    protected
+
 }
