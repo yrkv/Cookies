@@ -10,9 +10,8 @@ import org.lwjgl.input.Keyboard;
 public class Player extends MovingEntity {
     Key keyboard;
 
-    public Player(double x, double y, double dir, double speed, Key kboard) {
+    public Player(double x, double y, double dir, double speed) {
 		super(x, y, dir, speed);
-        keyboard = kboard;
 		setSprite(Sprite.mainCharacter);
     }
 }
