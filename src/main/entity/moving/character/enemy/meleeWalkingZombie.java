@@ -14,6 +14,19 @@ public class meleeWalkingZombie extends EnemyBase {
     }
 
     public void selectMove() {
-        setDirTowards(getPlayer());
+
+        if(getPlayer().isAlive()) {
+            setDirTowards(getPlayer());
+        } else {
+            setDir(Math.random() * 2);
+            takeDamage(1.0);
+        }
+
+
+        double dx = getPlayerX() - getX();
+        double dy = getPlayerY() - getY();
+        if(dx < 15 && dy < 15 && dx > -15 && dy > -15) {
+            getPlayer().takeDamage(1.0);
+        }
     }
 }

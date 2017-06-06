@@ -19,10 +19,18 @@ public class Actor extends MovingEntity {
         double originalHealth = health;
         if(health - dmg < 0) {
             health = 0;
+            kill();
         } else {
             health -= dmg;
+            if(health == 0) {
+                kill();
+            }
         }
         return health-originalHealth;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 
     public void kill() {
