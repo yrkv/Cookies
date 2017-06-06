@@ -3,6 +3,7 @@ package main;
 import main.display.Sprite;
 import main.entity.moving.character.Player;
 import main.entity.moving.character.enemy.meleeWalkingZombie;
+import main.entity.moving.character.enemy.radiatedGunner;
 import main.keyboard.Key;
 import main.level.Level;
 import org.lwjgl.LWJGLException;
@@ -56,6 +57,7 @@ public class Main {
 		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
 		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
 		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
+		level.addEntity(new radiatedGunner(1200,1200,0,2,100,5000,level));
 	}
 
 	public void loop() {

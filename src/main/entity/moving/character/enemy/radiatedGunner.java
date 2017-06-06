@@ -29,8 +29,9 @@ public class radiatedGunner extends EnemyBase {
     }
 
     public void tryShoot() {
-        if((System.currentTimeMillis() - 0) > reloadTime) {
+        if((System.currentTimeMillis() - timer) > reloadTime) {
             Bullet bullet = new Bullet(getX(),getY(),0, 9,10, getLevel());
+            bullet.setDirTowards(getLevel().getPlayer());
             timer = System.currentTimeMillis();
         }
     }
