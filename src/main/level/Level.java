@@ -79,7 +79,9 @@ public class Level {
 	}
 
 	public void deleteEntity(Entity entity) {
-		deletionQueue.add(entities.indexOf(entity));
+		int i = entities.indexOf(entity);
+		if (i >= 0)
+			deletionQueue.add(i);
 	}
 
 	public Player getPlayer() {
