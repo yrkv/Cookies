@@ -2,25 +2,23 @@ package main.entity.moving.character.enemy;
 
 import main.entity.moving.character.Actor;
 import main.entity.moving.character.Player;
+import main.level.Level;
 
 /**
  * Created by Kaleb on 6/4/2017.
  */
 public class EnemyBase extends Actor {
 
-    private Player player1;
-
-    public EnemyBase(double x, double y, double dir, double spd, double hp, Player player) {
-        super(x,y,dir,spd,hp);
-        player1 = player;
+    public EnemyBase(double x, double y, double dir, double spd, double hp, Level level) {
+        super(x,y,dir,spd,hp, level);
     }
 
     protected double getPlayerX() {
-        return player1.getX();
+        return getPlayer().getX();
     }
 
     protected double getPlayerY() {
-        return player1.getY();
+        return getPlayer().getY();
     }
 
 }

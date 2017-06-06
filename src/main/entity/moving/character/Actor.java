@@ -1,6 +1,7 @@
 package main.entity.moving.character;
 
 import main.entity.moving.MovingEntity;
+import main.level.Level;
 
 /**
  * Created by Kaleb on 6/5/2017.
@@ -9,8 +10,8 @@ public class Actor extends MovingEntity {
     double health;
     boolean alive = true;
 
-    public Actor(double x, double y, double dir, double speed, double hp) {
-        super(x,y,dir,speed);
+    public Actor(double x, double y, double dir, double speed, double hp, Level level) {
+        super(x,y,dir,speed,level);
         health = hp;
     }
 

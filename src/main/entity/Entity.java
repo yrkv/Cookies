@@ -1,6 +1,7 @@
 package main.entity;
 
 import main.display.Sprite;
+import main.level.Level;
 
 /**
  * Created by Yegor Kuznetsov on 6/1/2017.
@@ -11,11 +12,15 @@ public class Entity {
 	private double y = 0;
 	private double dir = 0;
 	private Sprite sprite = null;
+	private double hitBoxRadius = 0; // TODO: speed this up
 
-	public Entity(double x, double y, double dir) {
+	private Level level;
+
+	public Entity(double x, double y, double dir, Level level) {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.level = level;
 	}
 
 	public boolean render() {
@@ -64,10 +69,7 @@ public class Entity {
 		double dx = getX() - other.getX();
 		double dy = getY() - other.getY();
 
-		if(dx < 15 && dy < 15 && dx > -15 && dy > -15) {
-			return true;
-		}
-		return false;
+		return dx*dx + dy*dy < hitBoxRadius*hitBoxRadius;
 	}
 
 	public double setDirTowards(Entity to) {
@@ -96,5 +98,13 @@ public class Entity {
 	public double setDirTowardsTile(int x, int y) {
 		double direction = 0;
 		return direction;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void update() {
+
 	}
 }

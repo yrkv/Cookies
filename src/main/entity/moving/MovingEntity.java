@@ -2,6 +2,7 @@ package main.entity.moving;
 
 import main.entity.Entity;
 import main.entity.moving.character.Player;
+import main.level.Level;
 
 /**
  * Created by USER on 6/1/2017.
@@ -10,17 +11,10 @@ import main.entity.moving.character.Player;
  */
 public abstract class MovingEntity extends Entity {
 	private double speed;
-	private Player player1;
 
-	public MovingEntity(double x, double y, double dir, double spd, Player player) {
-		super(x, y, dir);
+	public MovingEntity(double x, double y, double dir, double spd, Level level) {
+		super(x, y, dir, level);
 		speed = spd;
-		player1 = player;
-	}
-
-	public MovingEntity(double x, double y, double dir) {
-		super(x,y,dir);
-		speed = 0.0;
 	}
 
 	// TODO: implement checking if a moving main.entity can move in a direction
@@ -36,7 +30,7 @@ public abstract class MovingEntity extends Entity {
 	}
 
 	protected Player getPlayer() {
-		return player1;
+		return getLevel().getPlayer();
 	}
 
 	public void setSpeed(double newSpeed) {
