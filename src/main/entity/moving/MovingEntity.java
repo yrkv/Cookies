@@ -1,6 +1,7 @@
 package main.entity.moving;
 
 import main.entity.Entity;
+import main.entity.moving.character.Player;
 
 /**
  * Created by USER on 6/1/2017.
@@ -9,10 +10,12 @@ import main.entity.Entity;
  */
 public abstract class MovingEntity extends Entity {
 	private double speed;
+	private Player player1;
 
-	public MovingEntity(double x, double y, double dir, double spd) {
+	public MovingEntity(double x, double y, double dir, double spd, Player player) {
 		super(x, y, dir);
 		speed = spd;
+		player1 = player;
 	}
 
 	public MovingEntity(double x, double y, double dir) {
@@ -30,6 +33,10 @@ public abstract class MovingEntity extends Entity {
 			setX(getX() + speed * Math.cos(dir));
 			setY(getY() - speed * Math.sin(dir));
 		}
+	}
+
+	protected Player getPlayer() {
+		return player1;
 	}
 
 	public void setSpeed(double newSpeed) {

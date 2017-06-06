@@ -59,6 +59,17 @@ public class Entity {
 		this.dir = dir;
 	}
 
+	// TODO: Add a "width" and a "height" property to entities and use that for colision detection.
+	public boolean colidesWith(Entity other) {
+		double dx = getX() - other.getX();
+		double dy = getY() - other.getY();
+
+		if(dx < 15 && dy < 15 && dx > -15 && dy > -15) {
+			return true;
+		}
+		return false;
+	}
+
 	public double setDirTowards(Entity to) {
 		double direction;
 

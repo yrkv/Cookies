@@ -8,7 +8,7 @@ import main.entity.moving.character.Player;
  */
 public class EnemyBase extends Actor {
 
-    Player player1;
+    private Player player1;
 
     public EnemyBase(double x, double y, double dir, double spd, double hp, Player player) {
         super(x,y,dir,spd,hp);
@@ -17,10 +17,6 @@ public class EnemyBase extends Actor {
 
     protected double getPlayerX() {
         return player1.getX();
-    }
-
-    protected Player getPlayer() {
-        return player1;
     }
 
     protected double getPlayerY() {
