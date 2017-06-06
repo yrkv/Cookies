@@ -12,7 +12,7 @@ public class Bullet extends ProjectileBase {
     public Bullet(double x, double y, double dir, double spd, double dmg, Level level) {
         super(x,y,dir,spd,dmg,level);
 
-        setHitBoxRadius(10);
+        setHitBoxRadius(100);
 
         setSprite(Sprite.meleeWalkingZombie);
     }
