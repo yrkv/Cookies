@@ -8,13 +8,15 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Level {
 	private int[][] tiles;
 
 	private Player player;
 	public ArrayList<Entity> entities = new ArrayList<>();
+
+	private ArrayList<Entity> entityQueue = new ArrayList<>();
 
 
 	// this is for custom levels and making our own to test shit
@@ -39,6 +41,7 @@ public class Level {
 	// TODO: Create a version that generates a level.
 
 	public void updateEntities() {
+
 		for (Entity entity: entities) {
 			entity.update();
 		}
@@ -50,8 +53,14 @@ public class Level {
 		}
 	}
 
+	public void deQueueEntities() {
+		while (entityQueue.size() > 0) {
+			entities.add(entityQueue.remove(0));
+		}
+	}
+
 	public void addEntity(Entity entity) {
-		entities.add(entity);
+		entityQueue.add(entity);
 	}
 
 	public Player getPlayer() {

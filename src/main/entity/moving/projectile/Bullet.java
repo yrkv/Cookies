@@ -15,15 +15,6 @@ public class Bullet extends ProjectileBase {
         setSprite(Sprite.meleeWalkingZombie);
     }
 
-    public boolean render() {
-        GL11.glColor3d(Math.random(), Math.random(), Math.random());
-        GL11.glBegin(GL11.GL_POLYGON);
-        for(double i = 0; i < 2 * Math.PI; i += Math.PI / 12)
-            GL11.glVertex2d(Math.cos(i) * 5 + getPlayer().getX(), Math.sin(i) * 5 + getPlayer().getY());
-        GL11.glEnd();
-        return true;
-    }
-
     public void update() {
         move(getDir());
 

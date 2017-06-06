@@ -33,6 +33,8 @@ public class radiatedGunner extends EnemyBase {
     public void tryShoot() {
         if((System.currentTimeMillis() - timer) > reloadTime) {
             Bullet bullet = new Bullet(getX(),getY(),0, 9,10, getLevel());
+            getLevel().addEntity(bullet);
+            System.out.println("aaa");
             bullet.setDirTowards(getLevel().getPlayer());
             timer = System.currentTimeMillis();
         }
@@ -44,7 +46,7 @@ public class radiatedGunner extends EnemyBase {
             move(getDir());
         }
         if(distanceTo(getPlayer()) < range) {
-            System.out.println((System.currentTimeMillis() - timer));
+//            System.out.println((System.currentTimeMillis() - timer));
             tryShoot();
         }
      }
