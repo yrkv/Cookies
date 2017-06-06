@@ -12,6 +12,8 @@ public class Bullet extends ProjectileBase {
     public Bullet(double x, double y, double dir, double spd, double dmg, Level level) {
         super(x,y,dir,spd,dmg,level);
 
+        setHitBoxRadius(10);
+
         setSprite(Sprite.meleeWalkingZombie);
     }
 
@@ -20,6 +22,7 @@ public class Bullet extends ProjectileBase {
         System.out.println(colidesWith(getPlayer()));
         if(colidesWith(getPlayer())) {
             applyDamage(getPlayer());
+            delete();
         }
     }
 }

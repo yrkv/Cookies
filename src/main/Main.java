@@ -104,6 +104,5 @@ public class Main {
 
 	private void update() {
 		level.updateEntities();
-		level.deQueueEntities();
     }
 }

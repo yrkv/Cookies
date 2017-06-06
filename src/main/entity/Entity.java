@@ -69,6 +69,10 @@ public class Entity {
 		this.dir = dir;
 	}
 
+	protected void setHitBoxRadius(double dist) {
+		hitBoxRadius = dist;
+	}
+
 	// TODO: Add a "width" and a "height" property to entities and use that for colision detection.
 	public boolean colidesWith(Entity other) {
 		double dx = getX() - other.getX();
@@ -118,5 +122,9 @@ public class Entity {
 
 	public void update() {
 
+	}
+
+	protected void delete() {
+		level.deleteEntity(this);
 	}
 }

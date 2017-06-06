@@ -17,6 +17,7 @@ public class Level {
 	public ArrayList<Entity> entities = new ArrayList<>();
 
 	private ArrayList<Entity> entityQueue = new ArrayList<>();
+	private ArrayList<Integer> deletionQueue = new ArrayList<>();
 
 
 	// this is for custom levels and making our own to test shit
@@ -41,10 +42,11 @@ public class Level {
 	// TODO: Create a version that generates a level.
 
 	public void updateEntities() {
-
 		for (Entity entity: entities) {
 			entity.update();
 		}
+		deQueueEntities();
+		deQueueDeletion();
 	}
 
 	public void renderEntities() {
@@ -59,8 +61,25 @@ public class Level {
 		}
 	}
 
+	public void deQueueDeletion() {
+		deletionQueue.sort(new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o2 - o1;
+			}
+		});
+
+		while (deletionQueue.size() > 0) {
+			entities.remove((int) deletionQueue.remove(0));
+		}
+	}
+
 	public void addEntity(Entity entity) {
 		entityQueue.add(entity);
+	}
+
+	public void deleteEntity(Entity entity) {
+		deletionQueue.add(entities.indexOf(entity));
 	}
 
 	public Player getPlayer() {
