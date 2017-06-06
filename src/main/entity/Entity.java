@@ -1,6 +1,7 @@
 package main.entity;
 
 import main.display.Sprite;
+import main.entity.moving.character.Player;
 import main.level.Level;
 
 /**
@@ -34,6 +35,10 @@ public class Entity {
 			sprite.render(x - width / 2.0, y - height / 2.0, width, height);
 		}
 		return sprite != null;
+	}
+
+	protected Player getPlayer() {
+		return getLevel().getPlayer();
 	}
 
 	protected void setSprite(Sprite sprite) {

@@ -29,10 +29,6 @@ public abstract class MovingEntity extends Entity {
 		}
 	}
 
-	protected Player getPlayer() {
-		return getLevel().getPlayer();
-	}
-
 	public void setSpeed(double newSpeed) {
 		speed = newSpeed;
 	}
