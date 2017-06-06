@@ -51,13 +51,13 @@ public class Main {
 
 		level = new Level("haha who needs levels");
 
-		level.addEntity(new meleeWalkingZombie(300,300,0,1,100,level));
-		level.addEntity(new meleeWalkingZombie(800,600,0,1.1,100,level));
-		level.addEntity(new meleeWalkingZombie(200,900,0,1.2,100,level));
-		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
-		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
-		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
-		level.addEntity(new radiatedGunner(1200,1200,0,2,100,5000, 300,level));
+//		level.addEntity(new meleeWalkingZombie(300,300,0,1,100,level));
+//		level.addEntity(new meleeWalkingZombie(800,600,0,1.1,100,level));
+//		level.addEntity(new meleeWalkingZombie(200,900,0,1.2,100,level));
+//		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
+//		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
+//		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
+		level.addEntity(new radiatedGunner(400,400,0,2,100,5000, 300,level));
 	}
 
 	public void loop() {
