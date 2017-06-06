@@ -50,15 +50,15 @@ public class Main {
 		glMatrixMode(GL_MODELVIEW);
 		glEnable (GL_BLEND); glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		level = new Level("haha who needs levels");
+		level = new Level("res/level.png");
 
-		level.addEntity(new meleeWalkingZombie(300,300,0,1,100,level));
-		level.addEntity(new meleeWalkingZombie(800,600,0,1.1,100,level));
-		level.addEntity(new meleeWalkingZombie(200,900,0,1.2,100,level));
-		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
-		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
-		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
-		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
+//		level.addEntity(new meleeWalkingZombie(300,300,0,1,100,level));
+//		level.addEntity(new meleeWalkingZombie(800,600,0,1.1,100,level));
+//		level.addEntity(new meleeWalkingZombie(200,900,0,1.2,100,level));
+//		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
+//		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
+//		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
+//		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
 
 		level.deQueueEntities();
 	}
@@ -90,7 +90,7 @@ public class Main {
 		Sprite.tile5.render(0, 128, 32, 32);
 		Sprite.tile6.render(0, 160, 32, 32);
 
-		level.renderEntities();
+		level.render();
 
 		totalFrames++;
 	}
