@@ -58,7 +58,7 @@ public class Main {
 		level.addEntity(new meleeWalkingZombie(1000,-300,0,1.3,100,level));
 		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
 		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
-		level.addEntity(new radiatedGunner(600,600,0,2,100,500, 300,level));
+		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
 
 		level.deQueueEntities();
 	}

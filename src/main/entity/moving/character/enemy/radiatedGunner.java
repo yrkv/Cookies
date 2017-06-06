@@ -26,13 +26,12 @@ public class radiatedGunner extends EnemyBase {
             setDirTowards(getPlayer());
         } else {
             setDir(Math.random() * 2.0);
-            takeDamage(1.0);
         }
     }
 
     public void tryShoot() {
         if((System.currentTimeMillis() - timer) > reloadTime) {
-            Bullet bullet = new Bullet(getX(),getY(),0, 19,1220, getLevel());
+            Bullet bullet = new Bullet(getX(),getY(),0, 9,10, getLevel());
             getLevel().addEntity(bullet);
             bullet.setDirTowards(getLevel().getPlayer());
             timer = System.currentTimeMillis();

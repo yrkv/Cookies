@@ -20,7 +20,6 @@ public class meleeWalkingZombie extends EnemyBase {
             setDirTowards(getPlayer());
         } else {
             setDir(Math.random() * 2);
-            takeDamage(1.0);
         }
 
 
