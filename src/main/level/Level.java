@@ -33,6 +33,7 @@ public class Level {
 		}
 
 		player = new Player(100, 100, this);
+		addEntity(player);
 	}
 
 	// TODO: Create a version that generates a level.
