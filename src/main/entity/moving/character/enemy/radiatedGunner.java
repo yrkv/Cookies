@@ -10,11 +10,13 @@ import main.level.Level;
  */
 public class radiatedGunner extends EnemyBase {
     double reloadTime;
+    double range;
     long timer = 0;
 
-    public radiatedGunner(double x, double y, double dir, double spd, double hp, double rldTime, Level level) {
+    public radiatedGunner(double x, double y, double dir, double spd, double hp, double rldTime, double rnge, Level level) {
         super(x,y,dir,spd,hp,level);
         reloadTime = rldTime;
+        range = rnge;
 
         setSprite(Sprite.meleeWalkingZombie);
     }
@@ -35,5 +37,15 @@ public class radiatedGunner extends EnemyBase {
             timer = System.currentTimeMillis();
         }
     }
+
+    public void update() {
+        if(distanceTo(getPlayer()) < range/2) {
+            selectMove();
+            move(getDir());
+        }
+        if(distanceTo(getPlayer()) < range) {
+            tryShoot();
+        }
+     }
 
 }
