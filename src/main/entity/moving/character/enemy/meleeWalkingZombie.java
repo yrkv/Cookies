@@ -29,4 +29,11 @@ public class meleeWalkingZombie extends EnemyBase {
             getPlayer().takeDamage(1.0);
         }
     }
+
+    public void update() {
+        if(isAlive()) {
+            selectMove();
+            move(getDir());
+        }
+    }
 }

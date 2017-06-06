@@ -7,7 +7,7 @@ import main.entity.Entity;
  * Contains a move function along with a move check.
  * Contains a speed variable with accessor/setter methods.
  */
-public class MovingEntity extends Entity {
+public abstract class MovingEntity extends Entity {
 	private double speed;
 
 	public MovingEntity(double x, double y, double dir, double spd) {

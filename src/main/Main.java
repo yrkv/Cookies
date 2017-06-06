@@ -55,7 +55,7 @@ public class Main {
 		glEnable (GL_BLEND); glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		keyboard = new Key();
-		player = new Player(100, 100, 0, 5, 100);
+		player = new Player(100, 100, 0, 5, 100, keyboard);
 		zombie1 = new meleeWalkingZombie(300,300,0,1.5,100,player);
 		zombie2 = new meleeWalkingZombie(800,600,0,1,100,player);
 		zombie3 = new meleeWalkingZombie(200,900,0,1.5,100,player);
@@ -116,43 +116,12 @@ public class Main {
 	}
 
 	private void update() {
-        double d = (keyboard.getKeysPressed() % 2 == 0) ? Math.sqrt(2.0) : 1;
-        double speed = 5.0 / d;
-        if(player.isAlive()) {
-            player.setSpeed(speed);
-            if (keyboard.key[Keyboard.KEY_W]) player.move(0.5 * Math.PI);
-            if (keyboard.key[Keyboard.KEY_A]) player.move(1.0 * Math.PI);
-            if (keyboard.key[Keyboard.KEY_S]) player.move(1.5 * Math.PI);
-            if (keyboard.key[Keyboard.KEY_D]) player.move(0);
-
-            player.setDir(Math.atan((player.getY() - (h - Mouse.getY())) / (Mouse.getX() - player.getX())));
-            if (Mouse.getX() < player.getX())
-                player.setDir(player.getDir() + Math.PI);
-        }
-
-        if(zombie1.isAlive()) {
-            zombie1.selectMove();
-            zombie1.move(zombie1.getDir());
-        }
-        if(zombie2.isAlive()) {
-            zombie2.selectMove();
-            zombie2.move(zombie2.getDir());
-        }
-        if (zombie3.isAlive()) {
-            zombie3.selectMove();
-            zombie3.move(zombie3.getDir());
-        }
-        if(zombie4.isAlive()) {
-            zombie4.selectMove();
-            zombie4.move(zombie4.getDir());
-        }
-        if(zombie5.isAlive()) {
-            zombie5.selectMove();
-            zombie5.move(zombie5.getDir());
-        }
-        if(zombie6.isAlive()) {
-            zombie6.selectMove();
-            zombie6.move(zombie6.getDir());
-        }
+		player.update();
+		zombie1.update();
+		zombie2.update();
+		zombie3.update();
+		zombie4.update();
+		zombie5.update();
+		zombie6.update();
     }
 }
