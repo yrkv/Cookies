@@ -36,5 +36,6 @@ public class Actor extends MovingEntity {
 
     public void kill() {
         alive = false;
+        delete();
     }
 }

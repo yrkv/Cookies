@@ -19,7 +19,6 @@ public class Bullet extends ProjectileBase {
 
     public void update() {
         move(getDir());
-        System.out.println(colidesWith(getPlayer()));
         if(colidesWith(getPlayer())) {
             applyDamage(getPlayer());
             delete();
