@@ -77,6 +77,13 @@ public class Entity {
 		return dx*dx + dy*dy < hitBoxRadius*hitBoxRadius;
 	}
 
+	protected double distanceTo(Entity other) {
+		double dx = getX() - other.getX();
+		double dy = getY() - other.getY();
+
+		return Math.sqrt(dx*dx + dy*dy);
+	}
+
 	public double setDirTowards(Entity to) {
 		double direction;
 
