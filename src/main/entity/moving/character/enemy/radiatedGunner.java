@@ -44,6 +44,7 @@ public class radiatedGunner extends EnemyBase {
             move(getDir());
         }
         if(distanceTo(getPlayer()) < range) {
+            System.out.println((System.currentTimeMillis() - timer));
             tryShoot();
         }
      }
