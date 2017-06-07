@@ -127,4 +127,8 @@ public class Level {
 	public Player getPlayer() {
 		return player;
 	}
+
+	public ArrayList<Entity> getEntities() {
+		return entities;
+	}
 }

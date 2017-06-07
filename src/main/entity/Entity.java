@@ -1,6 +1,7 @@
 package main.entity;
 
 import main.display.Sprite;
+import main.entity.moving.character.Actor;
 import main.entity.moving.character.Player;
 import main.level.Level;
 
@@ -14,6 +15,7 @@ public class Entity {
 	private double dir = 0;
 	private Sprite sprite = null;
 	private double hitBoxRadius = 0; // TODO: speed this up
+	private boolean isActor = false;
 
 	private Level level;
 
@@ -81,7 +83,7 @@ public class Entity {
 		return dx*dx + dy*dy < hitBoxRadius*hitBoxRadius;
 	}
 
-	protected double distanceTo(Entity other) {
+	public double distanceTo(Entity other) {
 		double dx = getX() - other.getX();
 		double dy = getY() - other.getY();
 
@@ -118,6 +120,15 @@ public class Entity {
 
 	public Level getLevel() {
 		return level;
+	}
+
+	protected boolean setIsActor(boolean newState) {
+		isActor = newState;
+		return isActor;
+	}
+
+	public boolean getActorStatus() {
+		return isActor;
 	}
 
 	public void update() {

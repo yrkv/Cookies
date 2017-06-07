@@ -10,7 +10,8 @@ import main.level.Level;
 public class EnemyBase extends Actor {
 
     public EnemyBase(double x, double y, double dir, double spd, double hp, Level level) {
-        super(x,y,dir,spd,hp, level);
+        super(x,y,dir,spd,hp,level);
+        setIsActor(true);
     }
 
     protected double getPlayerX() {

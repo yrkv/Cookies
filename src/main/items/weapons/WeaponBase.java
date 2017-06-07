@@ -2,6 +2,7 @@ package main.items.weapons;
 
 import main.entity.Entity;
 import main.items.ItemBase;
+import main.level.Level;
 
 /**
  * Created by Kaleb on 6/6/2017.
@@ -10,8 +11,8 @@ public class WeaponBase extends ItemBase {
     private double damage;
     private double range;
 
-    public WeaponBase(double dmg, double rnge, Entity owner) {
-        super(owner);
+    public WeaponBase(double dmg, double rnge, Entity owner, Level level) {
+        super(owner,level);
         damage = dmg;
         range = rnge;
     }

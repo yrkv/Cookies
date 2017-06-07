@@ -1,15 +1,9 @@
 package main;
 
 import main.display.Sprite;
-import main.entity.moving.character.Player;
-import main.entity.moving.character.enemy.meleeWalkingZombie;
-import main.entity.moving.character.enemy.radiatedGunner;
-import main.entity.moving.projectile.Bullet;
-import main.keyboard.Key;
+import main.items.weapons.dopeySword;
 import main.level.Level;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -59,6 +53,8 @@ public class Main {
 //		level.addEntity(new meleeWalkingZombie(1300,-400,0,1.4,100,level));
 //		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
 //		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
+
+		dopeySword PoS = new dopeySword(50,150,level.getPlayer(),level);
 
 		level.deQueueEntities();
 	}

@@ -2,6 +2,7 @@ package main.items;
 
 import main.display.Sprite;
 import main.entity.Entity;
+import main.level.Level;
 
 /**
  * Created by Kaleb on 6/6/2017.
@@ -9,9 +10,11 @@ import main.entity.Entity;
 public class ItemBase {
     private Sprite sprite = null;
     private Entity owner;
+    private Level level;
 
-    public ItemBase(Entity ownr) {
+    public ItemBase(Entity ownr, Level level) {
         owner = ownr;
+        this.level = level;
     }
 
     protected void setSprite(Sprite sprite) {
@@ -24,5 +27,9 @@ public class ItemBase {
 
     public void setOwner(Entity owner) {
         this.owner = owner;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }
