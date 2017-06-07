@@ -1,7 +1,7 @@
 package main;
 
 import main.display.Sprite;
-import main.items.weapons.dopeySword;
+import main.items.weapons.DopeySword;
 import main.level.Level;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -54,7 +54,7 @@ public class Main {
 //		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
 //		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
 
-		dopeySword PoS = new dopeySword(50,150,level.getPlayer(),level);
+		DopeySword PoS = new DopeySword(50,150,level.getPlayer(),level);
 
 		level.deQueueEntities();
 	}

@@ -9,9 +9,9 @@ import main.level.Level;
 /**
  * Created by Kaleb on 6/6/2017.
  */
-public class dopeySword extends WeaponBase {
+public class DopeySword extends WeaponBase {
 
-    public dopeySword(double dmg, double rnge, Entity owner, Level level) {
+    public DopeySword(double dmg, double rnge, Entity owner, Level level) {
         super(dmg,rnge,owner,level);
 
         setSprite(Sprite.tile1);
