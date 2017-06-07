@@ -1,7 +1,11 @@
 package main.entity.moving.character;
 
 import main.entity.moving.MovingEntity;
+import main.items.ItemBase;
 import main.level.Level;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by Kaleb on 6/5/2017.
@@ -9,10 +13,16 @@ import main.level.Level;
 public class Actor extends MovingEntity {
     double health;
     boolean alive = true;
+    ArrayList<ItemBase> inventory;
 
-    public Actor(double x, double y, double dir, double speed, double hp, Level level) {
+    public Actor(double x, double y, double dir, double speed, double hp, Level level, int inventorySize) {
         super(x,y,dir,speed,level);
+        inventory = new ArrayList<ItemBase>(inventorySize);
         health = hp;
+    }
+
+    public ArrayList<ItemBase> getInventory() {
+        return inventory;
     }
 
     //returns change in health

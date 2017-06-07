@@ -67,8 +67,9 @@ public class Entity {
 		return dir;
 	}
 
-	public void setDir(double dir) {
+	public double setDir(double dir) {
 		this.dir = dir;
+		return this.dir;
 	}
 
 	protected void setHitBoxRadius(double dist) {
@@ -90,7 +91,7 @@ public class Entity {
 		return Math.sqrt(dx*dx + dy*dy);
 	}
 
-	public double setDirTowards(Entity to) {
+	public double getDirTowards(Entity to) {
 		double direction;
 
 		double fx = getX();
@@ -109,8 +110,11 @@ public class Entity {
 			direction = Math.PI + Math.atan(slope);
 		}
 
-		setDir(direction);
 		return direction;
+	}
+
+	public double setDirTowards(Entity to) {
+		return setDir(getDirTowards(to));
 	}
 	//TODO: use tile coords for directioning
 	public double setDirTowardsTile(int x, int y) {

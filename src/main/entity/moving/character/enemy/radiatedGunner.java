@@ -14,7 +14,7 @@ public class radiatedGunner extends EnemyBase {
     long timer = 0;
 
     public radiatedGunner(double x, double y, double dir, double spd, double hp, double rldTime, double rnge, Level level) {
-        super(x,y,dir,spd,hp,level);
+        super(x,y,dir,spd,hp,0,level);
         reloadTime = rldTime;
         range = rnge;
 

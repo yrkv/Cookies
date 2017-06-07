@@ -11,10 +11,15 @@ public class WeaponBase extends ItemBase {
     private double damage;
     private double range;
 
-    public WeaponBase(double dmg, double rnge, Entity owner, Level level) {
-        super(owner,level);
+    public WeaponBase(double dmg, double rnge, double reloadTime, Entity owner, Level level) {
+        super(reloadTime,owner,level);
+        setWeaponStatus(true);
         damage = dmg;
         range = rnge;
+    }
+
+    public boolean toggleEquipStatus() {
+        return setEquipStatus(!isEquipped());
     }
 
     public double getDamage() {

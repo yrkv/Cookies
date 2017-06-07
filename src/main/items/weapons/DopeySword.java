@@ -11,19 +11,20 @@ import main.level.Level;
  */
 public class DopeySword extends WeaponBase {
 
-    public DopeySword(double dmg, double rnge, Entity owner, Level level) {
-        super(dmg,rnge,owner,level);
+    public DopeySword(double dmg, double rnge, double reloadTime, Entity owner, Level level) {
+        super(dmg,rnge,reloadTime,owner,level);
 
         setSprite(Sprite.tile1);
     }
 
-    private double onHit(Actor target) {
+    public double onHit(Actor target) {
         return target.takeDamage(getDamage());
     }
 
     //TODO: loop through entities and check for colision. If colides, store lowest distanceTo() as the target of onHit();
 
-    private Actor onAttack() {
+    @Override
+    public void onUse() {
         Entity closestTarget = null;
         double distance = -1;
 
@@ -41,8 +42,9 @@ public class DopeySword extends WeaponBase {
                 }
             }
         }
-
-        onHit((Actor)closestTarget);
-        return (Actor)closestTarget;
+        if((System.currentTimeMillis() - getLastUse()) > getReloadTime()) {
+            onHit((Actor) closestTarget);
+            setLastUse(System.currentTimeMillis());
+        }
     }
 }
