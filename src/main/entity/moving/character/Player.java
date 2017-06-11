@@ -34,7 +34,7 @@ public class Player extends Actor {
             if (Keyboard.isKeyDown(Keyboard.KEY_A)) move(1.0 * Math.PI);
             if (Keyboard.isKeyDown(Keyboard.KEY_S)) move(1.5 * Math.PI);
             if (Keyboard.isKeyDown(Keyboard.KEY_D)) move(0);
-            if (Mouse.isButtonDown(1)) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
                 for(ItemBase item : getInventory()) {
                     if(item.isWeapon() && item.isEquipped()) {
                         item.onUse();
