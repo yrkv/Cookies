@@ -1,6 +1,7 @@
 package main.items.weapons;
 
 import main.entity.Entity;
+import main.entity.moving.character.Actor;
 import main.items.ItemBase;
 import main.level.Level;
 
@@ -11,8 +12,8 @@ public class WeaponBase extends ItemBase {
     private double damage;
     private double range;
 
-    public WeaponBase(double dmg, double rnge, double reloadTime, Entity owner, Level level) {
-        super(reloadTime,owner,level);
+    public WeaponBase(double dmg, double rnge, double reloadTime, Level level) {
+        super(reloadTime,level);
         setWeaponStatus(true);
         damage = dmg;
         range = rnge;

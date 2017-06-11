@@ -137,7 +137,7 @@ public class Entity {
 		return isActor;
 	}
 
-	public boolean getActorStatus() {
+	public boolean isActor() {
 		return isActor;
 	}
 
@@ -145,7 +145,7 @@ public class Entity {
 
 	}
 
-	protected void kill() {
+	public void kill() {
 		alive = false;
 	}
 

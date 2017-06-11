@@ -6,10 +6,12 @@ import main.items.weapons.DopeySword;
 import main.items.weapons.WeaponBase;
 import main.keyboard.Key;
 import main.level.Level;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 
+import java.awt.event.MouseWheelListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -22,6 +24,8 @@ public class Player extends Actor {
 		super(x, y, 0, 5, 100, level, 28);
 
 		setSprite(Sprite.mainCharacter);
+
+
     }
 
     public void update() {
@@ -34,12 +38,8 @@ public class Player extends Actor {
             if (Keyboard.isKeyDown(Keyboard.KEY_A)) move(1.0 * Math.PI);
             if (Keyboard.isKeyDown(Keyboard.KEY_S)) move(1.5 * Math.PI);
             if (Keyboard.isKeyDown(Keyboard.KEY_D)) move(0);
-            if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
-                for(ItemBase item : getInventory()) {
-                    if(item.isWeapon() && item.isEquipped()) {
-                        item.onUse();
-                    }
-                }
+            if (Mouse.isButtonDown(0)) {
+                getEquippedItem().onUse();
             }
 
             setDir(Math.atan((Mouse.getY() - Display.getHeight() / 2.0) / (Mouse.getX() - Display.getWidth() / 2.0)));

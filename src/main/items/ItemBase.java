@@ -2,6 +2,7 @@ package main.items;
 
 import main.display.Sprite;
 import main.entity.Entity;
+import main.entity.moving.character.Actor;
 import main.level.Level;
 
 /**
@@ -16,9 +17,8 @@ public class ItemBase {
     private Entity owner;
     private Level level;
 
-    public ItemBase(double reloadTime, Entity ownr, Level level) {
+    public ItemBase(double reloadTime, Level level) {
         this.reloadTime = reloadTime;
-        owner = ownr;
         this.level = level;
     }
 
@@ -68,7 +68,7 @@ public class ItemBase {
 
     }
 
-    public void setOwner(Entity owner) {
+    public void setOwner(Actor owner) {
         this.owner = owner;
     }
 

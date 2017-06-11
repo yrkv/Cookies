@@ -3,7 +3,6 @@ package main.items.weapons;
 import main.display.Sprite;
 import main.entity.Entity;
 import main.entity.moving.character.Actor;
-import main.items.weapons.WeaponBase;
 import main.level.Level;
 
 /**
@@ -11,8 +10,8 @@ import main.level.Level;
  */
 public class DopeySword extends WeaponBase {
 
-    public DopeySword(double dmg, double rnge, double reloadTime, Entity owner, Level level) {
-        super(dmg,rnge,reloadTime,owner,level);
+    public DopeySword(double dmg, double rnge, double reloadTime, Level level) {
+        super(dmg,rnge,reloadTime,level);
 
         setSprite(Sprite.tile1);
     }
@@ -29,7 +28,7 @@ public class DopeySword extends WeaponBase {
         double distance = -1;
 
         for(Entity entity : getLevel().getEntities()) {
-            if(!entity.getActorStatus()) {
+            if(!entity.isActor()) {
                 continue;
             }
             if(getOwner().distanceTo(entity) < getRange()) {
@@ -42,9 +41,12 @@ public class DopeySword extends WeaponBase {
                 }
             }
         }
+
         if((System.currentTimeMillis() - getLastUse()) > getReloadTime()) {
-            onHit((Actor) closestTarget);
-            setLastUse(System.currentTimeMillis());
+            if (closestTarget != null) {
+                onHit((Actor) closestTarget);
+                setLastUse(System.currentTimeMillis());
+            }
         }
     }
 }
