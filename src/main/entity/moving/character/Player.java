@@ -42,8 +42,8 @@ public class Player extends Actor {
                 }
             }
 
-            setDir(Math.atan((getY() - (Display.getHeight() - Mouse.getY())) / (Mouse.getX() - getX())));
-            if (Mouse.getX() < getX())
+            setDir(Math.atan((Mouse.getY() - Display.getHeight() / 2.0) / (Mouse.getX() - Display.getWidth() / 2.0)));
+            if (Mouse.getX() < Display.getWidth() / 2.0)
                 setDir(getDir() + Math.PI);
         }
     }

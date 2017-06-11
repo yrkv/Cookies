@@ -96,7 +96,8 @@ public class Level {
 	public void renderTiles(int xScroll, int yScroll) {
 		for (int x = xScroll / 32; x <= (xScroll + Display.getWidth()) / 32; x++) {
 			for (int y = yScroll / 32; y <= (yScroll + Display.getHeight()) / 32; y++) {
-				tiles[y][x].render(xScroll, yScroll);
+				if (y > 0 && y < tiles.length && x > 0 && x < tiles[y].length)
+					tiles[y][x].render(xScroll, yScroll);
 			}
 		}
 	}
