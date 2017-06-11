@@ -10,7 +10,7 @@ public class FullTile extends Tile {
 		super(x, y, Sprite.tile5);
 	}
 
-	protected boolean hasCollision() {
+	public boolean hasCollision() {
 		return true;
 	}
 }

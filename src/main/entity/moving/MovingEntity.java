@@ -3,6 +3,7 @@ package main.entity.moving;
 import main.entity.Entity;
 import main.entity.moving.character.Player;
 import main.level.Level;
+import main.level.tile.Tile;
 
 /**
  * Created by USER on 6/1/2017.
@@ -17,9 +18,17 @@ public abstract class MovingEntity extends Entity {
 		speed = spd;
 	}
 
-	// TODO: implement checking if a moving main.entity can move in a direction
 	public boolean canMove(double dir) {
-		return true;
+		double newX = getX() + speed * Math.cos(dir);
+		double newY = getY() - speed * Math.sin(dir);
+		int xTile = (int) newX / 32;
+		int yTile = (int) newY / 32;
+		Tile[][] tiles = getLevel().getTiles();
+		if (xTile >= 0 && xTile < tiles[0].length && yTile >= 0 && yTile < tiles.length) {
+			return !tiles[yTile][xTile].hasCollision();
+		} else {
+			return true;
+		}
 	}
 
 	public void move(double dir) {

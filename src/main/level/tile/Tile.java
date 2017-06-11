@@ -1,6 +1,7 @@
 package main.level.tile;
 
 import main.display.Sprite;
+import org.lwjgl.opengl.Display;
 
 /**
  * Created by Yegor Kuznetsov on 6/6/2017.
@@ -16,10 +17,10 @@ public abstract class Tile {
 	}
 
 	public void render(int xScroll, int yScroll) {
-		sprite.image.draw(x - xScroll, y - yScroll, 32, 32);
+		sprite.image.draw(x - xScroll + Display.getWidth() / 2, y - yScroll + Display.getHeight() / 2, 32, 32);
 	}
 
-	protected boolean hasCollision() {
+	public boolean hasCollision() {
 		return false;
 	}
 

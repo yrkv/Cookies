@@ -50,7 +50,7 @@ public class Level {
 	private void genTile(int color, int x, int y) {
 		color &= 0xffffff;
 		switch (LevelData.values()[color]) {
-			case empty:
+			case  empty:
 				tiles[y][x] = new EmptyTile(x * 32, y * 32);
 				break;
 			case  full:
@@ -58,13 +58,17 @@ public class Level {
 				break;
 			case  player:
 				genTile(LevelData.empty.ordinal(), x, y);
-				addEntity(player = new Player(x, y, this));
+				addEntity(player = new Player(x * 32, y * 32, this));
 				break;
 			case  zombie:
 				genTile(LevelData.empty.ordinal(), x, y);
-				addEntity(new meleeWalkingZombie(x, y, 0, 1.5, 100, this));
+				addEntity(new meleeWalkingZombie(x * 32, y * 32, 0, 1.5, 100, this));
 				break;
 		}
+	}
+
+	public Tile[][] getTiles() {
+		return tiles;
 	}
 
 	// TODO: Create a version that generates a level.
@@ -94,9 +98,11 @@ public class Level {
 	}
 
 	public void renderTiles(int xScroll, int yScroll) {
-		for (int x = xScroll / 32; x <= (xScroll + Display.getWidth()) / 32; x++) {
-			for (int y = yScroll / 32; y <= (yScroll + Display.getHeight()) / 32; y++) {
-				if (y > 0 && y < tiles.length && x > 0 && x < tiles[y].length)
+		int width = Display.getWidth() / 64;
+		int height = Display.getHeight() / 64;
+		for (int x = xScroll / 32 - width - 1; x <= xScroll / 32 + width + 1; x++) {
+			for (int y = yScroll / 32 - height - 1; y <= yScroll / 32 + height + 1; y++) {
+				if (y >= 0 && y < tiles.length && x >= 0 && x < tiles[y].length)
 					tiles[y][x].render(xScroll, yScroll);
 			}
 		}
