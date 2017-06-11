@@ -38,8 +38,5 @@ public class meleeWalkingZombie extends EnemyBase {
             selectMove();
             move(getDir());
         }
-        else {
-            delete();
-        }
     }
 }

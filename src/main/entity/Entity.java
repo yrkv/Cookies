@@ -4,6 +4,7 @@ import main.display.Sprite;
 import main.entity.moving.character.Actor;
 import main.entity.moving.character.Player;
 import main.level.Level;
+import org.lwjgl.opengl.Display;
 
 /**
  * Created by Yegor Kuznetsov on 6/1/2017.
@@ -16,6 +17,7 @@ public class Entity {
 	private Sprite sprite = null;
 	private double hitBoxRadius = 0; // TODO: speed this up
 	private boolean isActor = false;
+	private boolean alive = true;
 
 	private Level level;
 
@@ -31,10 +33,14 @@ public class Entity {
 	}
 
 	public boolean render(int width, int height) {
+		return render(width, height, (int)getPlayer().getX(), (int)getPlayer().getY());
+	}
+
+	public boolean render(int width, int height, int xScroll, int yScroll) {
 		if (sprite != null) {
 			sprite.image.setCenterOfRotation(width / 2f, height / 2f);
 			sprite.image.setRotation((float) (-dir * 180 / Math.PI) - 90);
-			sprite.render(x - width / 2.0, y - height / 2.0, width, height);
+			sprite.render(x - width / 2.0 - xScroll + Display.getWidth() / 2, y - height / 2.0 - yScroll + Display.getHeight() / 2, width, height);
 		}
 		return sprite != null;
 	}
@@ -139,7 +145,11 @@ public class Entity {
 
 	}
 
-	protected void delete() {
-		level.deleteEntity(this);
+	protected void kill() {
+		alive = false;
+	}
+
+	public boolean isAlive() {
+		return alive;
 	}
 }

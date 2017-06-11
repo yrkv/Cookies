@@ -21,7 +21,6 @@ public class Bullet extends ProjectileBase {
         move(getDir());
         if(colidesWith(getPlayer())) {
             applyDamage(getPlayer());
-            delete();
         }
     }
 }

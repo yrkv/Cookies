@@ -79,13 +79,6 @@ public class Main {
 
 	private void render() {
 
-        Sprite.tile1.render(0, 0, 32, 32);
-        Sprite.tile2.render(0, 32, 32, 32);
-		Sprite.tile3.render(0, 64, 32, 32);
-		Sprite.tile4.render(0, 96, 32, 32);
-		Sprite.tile5.render(0, 128, 32, 32);
-		Sprite.tile6.render(0, 160, 32, 32);
-
 		level.render();
 
 		totalFrames++;

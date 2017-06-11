@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Actor extends MovingEntity {
     double health;
-    boolean alive = true;
     ArrayList<ItemBase> inventory;
 
     public Actor(double x, double y, double dir, double speed, double hp, Level level, int inventorySize) {
@@ -38,14 +37,5 @@ public class Actor extends MovingEntity {
             }
         }
         return health-originalHealth;
-    }
-
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public void kill() {
-        alive = false;
-        delete();
     }
 }

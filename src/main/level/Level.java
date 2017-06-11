@@ -7,6 +7,7 @@ import main.entity.moving.character.enemy.meleeWalkingZombie;
 import main.level.tile.EmptyTile;
 import main.level.tile.FullTile;
 import main.level.tile.Tile;
+import org.lwjgl.opengl.Display;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,6 @@ public class Level {
 	public ArrayList<Entity> entities = new ArrayList<>();
 
 	private ArrayList<Entity> entityQueue = new ArrayList<>();
-	private ArrayList<Integer> deletionQueue = new ArrayList<>();
 
 
 	// this is for custom levels and making our own to test shit
@@ -70,15 +70,20 @@ public class Level {
 	// TODO: Create a version that generates a level.
 
 	public void updateEntities() {
-		for (Entity entity: entities) {
-			entity.update();
+		for (int i = 0; i < entities.size(); i++) {
+			Entity entity = entities.get(i);
+			if (entity.isAlive())
+				entity.update();
+			else {
+				entities.remove(i);
+				i--;
+			}
 		}
 		deQueueEntities();
-		deQueueDeletion();
 	}
 
 	public void render() {
-		renderTiles();
+		renderTiles((int)player.getX(), (int)player.getY());
 		renderEntities();
 	}
 
@@ -88,10 +93,11 @@ public class Level {
 		}
 	}
 
-	public void renderTiles() {
-		for (Tile[] t: tiles) {
-			for (Tile tile: t)
-				tile.render(0, 0);
+	public void renderTiles(int xScroll, int yScroll) {
+		for (int x = xScroll / 32; x <= (xScroll + Display.getWidth()) / 32; x++) {
+			for (int y = yScroll / 32; y <= (yScroll + Display.getHeight()) / 32; y++) {
+				tiles[y][x].render(xScroll, yScroll);
+			}
 		}
 	}
 
@@ -101,27 +107,8 @@ public class Level {
 		}
 	}
 
-	public void deQueueDeletion() {
-		deletionQueue.sort(new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				return o2 - o1;
-			}
-		});
-
-		while (deletionQueue.size() > 0) {
-			entities.remove((int) deletionQueue.remove(0));
-		}
-	}
-
 	public void addEntity(Entity entity) {
 		entityQueue.add(entity);
-	}
-
-	public void deleteEntity(Entity entity) {
-		int i = entities.indexOf(entity);
-		if (i >= 0)
-			deletionQueue.add(i);
 	}
 
 	public Player getPlayer() {

@@ -39,12 +39,14 @@ public class radiatedGunner extends EnemyBase {
     }
 
     public void update() {
-        if(distanceTo(getPlayer()) > range/2) {
-            selectMove();
-            move(getDir());
-        }
-        if(distanceTo(getPlayer()) < range) {
-            tryShoot();
+        if (isAlive()) {
+            if (distanceTo(getPlayer()) > range / 2) {
+                selectMove();
+                move(getDir());
+            }
+            if (distanceTo(getPlayer()) < range) {
+                tryShoot();
+            }
         }
      }
 
