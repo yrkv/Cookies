@@ -23,4 +23,8 @@ public class ProjectileBase extends MovingEntity {
     }
 
 
+    public void move(double dir) {
+        setX(getX() + getSpeed() * Math.cos(dir));
+        setY(getY() - getSpeed() * Math.sin(dir));
+    }
 }

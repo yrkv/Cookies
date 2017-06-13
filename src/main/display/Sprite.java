@@ -11,12 +11,14 @@ public class Sprite {
 
 	public static final Sprite mainCharacter = new Sprite("res/mainCharacter.png", 200, 200);
 	public static final Sprite meleeWalkingZombie = new Sprite("res/meleeWalkingZombie.png", 100, 150);
+	public static final Sprite banana = new Sprite("res/banana.png");
 
 	public static final Sprite tile1 = new Sprite(0, 0, SpriteSheet.tiles);
 	public static final Sprite tile2 = new Sprite(1, 0, SpriteSheet.tiles);
 	public static final Sprite tile3 = new Sprite(2, 0, SpriteSheet.tiles);
 	public static final Sprite tile4 = new Sprite(3, 0, SpriteSheet.tiles);
 	public static final Sprite tile5 = new Sprite(4, 0, SpriteSheet.tiles);
+
 	public static final Sprite tile6 = new Sprite(5, 0, SpriteSheet.tiles);
 
 	public Sprite(int x, int y, int width, int height, SpriteSheet sheet) {

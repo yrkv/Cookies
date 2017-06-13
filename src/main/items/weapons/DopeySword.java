@@ -3,6 +3,8 @@ package main.items.weapons;
 import main.display.Sprite;
 import main.entity.Entity;
 import main.entity.moving.character.Actor;
+import main.entity.moving.projectile.Banana;
+import main.entity.moving.projectile.Bullet;
 import main.level.Level;
 
 /**
@@ -43,10 +45,12 @@ public class DopeySword extends WeaponBase {
         }
 
         if((System.currentTimeMillis() - getLastUse()) > getReloadTime()) {
+            Banana banana = new Banana(getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getDir(), 10, 60, getLevel());
+            getLevel().addEntity(banana);
             if (closestTarget != null) {
                 onHit((Actor) closestTarget);
-                setLastUse(System.currentTimeMillis());
             }
+            setLastUse(System.currentTimeMillis());
         }
     }
 }

@@ -18,24 +18,21 @@ public abstract class MovingEntity extends Entity {
 		speed = spd;
 	}
 
-	public boolean canMove(double dir) {
+	public boolean canMoveX(double dir) {
 		double newX = getX() + speed * Math.cos(dir);
+		return getLevel().collideTiles(newX, getY());
+	}
+
+	public boolean canMoveY(double dir) {
 		double newY = getY() - speed * Math.sin(dir);
-		int xTile = (int) newX / 32;
-		int yTile = (int) newY / 32;
-		Tile[][] tiles = getLevel().getTiles();
-		if (xTile >= 0 && xTile < tiles[0].length && yTile >= 0 && yTile < tiles.length) {
-			return !tiles[yTile][xTile].hasCollision();
-		} else {
-			return true;
-		}
+		return getLevel().collideTiles(getX(), newY);
 	}
 
 	public void move(double dir) {
-		if(canMove(dir)) {
+		if (canMoveX(dir))
 			setX(getX() + speed * Math.cos(dir));
+		if (canMoveY(dir))
 			setY(getY() - speed * Math.sin(dir));
-		}
 	}
 
 	public void setSpeed(double newSpeed) {

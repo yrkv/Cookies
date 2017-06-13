@@ -19,7 +19,7 @@ public class Level {
 	private Tile[][] tiles;
 
 	private Player player;
-	public ArrayList<Entity> entities = new ArrayList<>();
+	private ArrayList<Entity> entities = new ArrayList<>();
 
 	private ArrayList<Entity> entityQueue = new ArrayList<>();
 
@@ -49,21 +49,25 @@ public class Level {
 
 	private void genTile(int color, int x, int y) {
 		color &= 0xffffff;
-		switch (LevelData.values()[color]) {
-			case  empty:
-				tiles[y][x] = new EmptyTile(x * 32, y * 32);
-				break;
-			case  full:
-				tiles[y][x] = new FullTile(x * 32, y * 32);
-				break;
-			case  player:
-				genTile(LevelData.empty.ordinal(), x, y);
-				addEntity(player = new Player(x * 32, y * 32, this));
-				break;
-			case  zombie:
-				genTile(LevelData.empty.ordinal(), x, y);
-				addEntity(new meleeWalkingZombie(x * 32, y * 32, 0, 1.5, 100, this));
-				break;
+		if (color < LevelData.values().length) {
+			switch (LevelData.values()[color]) {
+				case empty:
+					tiles[y][x] = new EmptyTile(x * 32, y * 32);
+					break;
+				case full:
+					tiles[y][x] = new FullTile(x * 32, y * 32);
+					break;
+				case player:
+					genTile(LevelData.empty.ordinal(), x, y);
+					addEntity(player = new Player(x * 32, y * 32, this));
+					break;
+				case zombie:
+					genTile(LevelData.empty.ordinal(), x, y);
+					addEntity(new meleeWalkingZombie(x * 32, y * 32, 0, 1.5, 100, this));
+					break;
+			}
+		} else {
+			genTile(LevelData.empty.ordinal(), x, y);
 		}
 	}
 
@@ -124,5 +128,15 @@ public class Level {
 
 	public ArrayList<Entity> getEntities() {
 		return entities;
+	}
+
+	public boolean collideTiles(double x, double y) {
+		int xTile = (int) x / 32;
+		int yTile = (int) y / 32;
+		if (xTile >= 0 && xTile < tiles[0].length && yTile >= 0 && yTile < tiles.length) {
+			return !tiles[yTile][xTile].collide(x, y);
+		} else {
+			return true;
+		}
 	}
 }

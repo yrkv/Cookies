@@ -25,8 +25,10 @@ public abstract class Tile {
 	}
 
 	public boolean collide(double x, double y) {
+		x %= 32;
+		y %= 32;
 		if (hasCollision()) {
-			return (x >= this.x && x <= this.x + 32 && y >= this.y && y <= this.y + 32);
+			return (x >= 0 && x <= 32 && y >= 0 && y <= 32);
 		} else {
 			return false;
 		}

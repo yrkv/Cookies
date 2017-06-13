@@ -54,7 +54,7 @@ public class Main {
 //		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
 //		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
 
-		DopeySword PoS = new DopeySword(50,30000,500,level);
+		DopeySword PoS = new DopeySword(50,100,500, level);
 		level.getPlayer().addItem(PoS);
 		level.getPlayer().equipItem(0);
 
