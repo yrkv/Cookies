@@ -29,7 +29,6 @@ public class Sprite {
 		image = sheet.sheet.getSubImage(x * 32, y * 32, 32, 32);
 	}
 
-	//
 	public Sprite(String path) {
 		try {
 			image = new Image(path);
@@ -50,7 +49,7 @@ public class Sprite {
 		return image;
 	}
 
-	public void render(double x, double y, int width, int height) {
+	public void render(int x, int y, int width, int height) {
 //		texture.bind();
 //
 //		GL11.glBegin(GL11.GL_QUADS);
@@ -63,6 +62,6 @@ public class Sprite {
 //		GL11.glTexCoord2f(0,texture.getHeight());
 //		GL11.glVertex2d(x,y+height);
 //		GL11.glEnd();
-		image.draw((float) x, (float) y, width, height);
+		image.draw(x, y, width, height);
 	}
 }

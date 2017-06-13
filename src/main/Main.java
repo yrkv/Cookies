@@ -7,6 +7,7 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL12.GL_CLAMP_TO_EDGE;
 
 import java.io.IOException;
 

@@ -30,7 +30,7 @@ public class Level {
 		try {
 			img = ImageIO.read(new File(path));
 		} catch (IOException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 
 		if (img != null) { // image properly read
@@ -136,7 +136,7 @@ public class Level {
 		if (xTile >= 0 && xTile < tiles[0].length && yTile >= 0 && yTile < tiles.length) {
 			return !tiles[yTile][xTile].collide(x, y);
 		} else {
-			return true;
+			return false;
 		}
 	}
 }

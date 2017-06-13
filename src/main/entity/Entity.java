@@ -38,9 +38,11 @@ public class Entity {
 
 	public boolean render(int width, int height, int xScroll, int yScroll) {
 		if (sprite != null) {
-			sprite.image.setCenterOfRotation(width / 2f, height / 2f);
-			sprite.image.setRotation((float) (-dir * 180 / Math.PI) - 90);
-			sprite.render(x - width / 2.0 - xScroll + Display.getWidth() / 2, y - height / 2.0 - yScroll + Display.getHeight() / 2, width, height);
+			if (dir != 0) {
+				sprite.image.setCenterOfRotation(width / 2f, height / 2f);
+				sprite.image.setRotation((float) (-dir * 180 / Math.PI) - 90);
+			}
+			sprite.render((int)x - width / 2 - xScroll + Display.getWidth() / 2, (int)y - height / 2 - yScroll + Display.getHeight() / 2, width, height);
 		}
 		return sprite != null;
 	}
