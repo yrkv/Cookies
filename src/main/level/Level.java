@@ -49,25 +49,28 @@ public class Level {
 
 	private void genTile(int color, int x, int y) {
 		color &= 0xffffff;
-		if (color < LevelData.values().length) {
-			switch (LevelData.values()[color]) {
-				case empty:
-					tiles[y][x] = new EmptyTile(x * 32, y * 32);
-					break;
-				case full:
-					tiles[y][x] = new FullTile(x * 32, y * 32);
-					break;
-				case player:
-					genTile(LevelData.empty.ordinal(), x, y);
-					addEntity(player = new Player(x * 32, y * 32, this));
-					break;
-				case zombie:
-					genTile(LevelData.empty.ordinal(), x, y);
-					addEntity(new meleeWalkingZombie(x * 32, y * 32, 0, 1.5, 100, this));
-					break;
-			}
-		} else {
-			genTile(LevelData.empty.ordinal(), x, y);
+		LevelData tile = LevelData.nullTile;
+		for (LevelData levelData : LevelData.values()) {
+			if (levelData.color == color)
+				tile = levelData;
+		}
+		switch (tile) {
+			case empty:
+				tiles[y][x] = new EmptyTile(x * 32, y * 32);
+				break;
+			case full:
+				tiles[y][x] = new FullTile(x * 32, y * 32);
+				break;
+			case player:
+				genTile(LevelData.empty.color, x, y);
+				addEntity(player = new Player(x * 32, y * 32, this));
+				break;
+			case zombie:
+				genTile(LevelData.empty.color, x, y);
+				addEntity(new meleeWalkingZombie(x * 32, y * 32, 0, 1.5, 100, this));
+				break;
+			default:
+				genTile(LevelData.empty.color, x, y);
 		}
 	}
 
