@@ -11,10 +11,12 @@ import main.level.Level;
 public class WeaponBase extends ItemBase {
     private double damage;
     private double range;
+    private double projectileSpeed;
 
-    public WeaponBase(double dmg, double rnge, double reloadTime, Level level) {
+    public WeaponBase(double dmg, double rnge, double projectileSpeed, double reloadTime, Level level) {
         super(reloadTime,level);
         setWeaponStatus(true);
+        this.projectileSpeed = projectileSpeed;
         damage = dmg;
         range = rnge;
     }
@@ -27,15 +29,26 @@ public class WeaponBase extends ItemBase {
         return damage;
     }
 
-    public void setDamage(double damage) {
+    public double setDamage(double damage) {
         this.damage = damage;
+        return this.damage;
     }
 
     public double getRange() {
         return range;
     }
 
-    public void setRange(double range) {
+    public double setRange(double range) {
         this.range = range;
+        return this.range;
+    }
+
+    public double getProjectileSpeed() {
+        return projectileSpeed;
+    }
+
+    public double setProjectileSpeed(double projectileSpeed) {
+        this.projectileSpeed = projectileSpeed;
+        return this.projectileSpeed;
     }
 }

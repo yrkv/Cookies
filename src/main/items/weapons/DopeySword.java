@@ -3,8 +3,7 @@ package main.items.weapons;
 import main.display.Sprite;
 import main.entity.Entity;
 import main.entity.moving.character.Actor;
-import main.entity.moving.projectile.Banana;
-import main.entity.moving.projectile.Bullet;
+import main.entity.moving.projectile.playerShot;
 import main.level.Level;
 
 /**
@@ -12,8 +11,8 @@ import main.level.Level;
  */
 public class DopeySword extends WeaponBase {
 
-    public DopeySword(double dmg, double rnge, double reloadTime, Level level) {
-        super(dmg,rnge,reloadTime,level);
+    public DopeySword(double dmg, double rnge, double projectileSpeed, double reloadTime, Level level) {
+        super(dmg,rnge,projectileSpeed,reloadTime,level);
 
         setSprite(Sprite.tile1);
     }
@@ -45,8 +44,9 @@ public class DopeySword extends WeaponBase {
         }
 
         if((System.currentTimeMillis() - getLastUse()) > getReloadTime()) {
-            Banana banana = new Banana(getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getDir(), 10, 60, getLevel());
-            getLevel().addEntity(banana);
+            //long ass banana making -- also its supposed to not be a projectile
+//            playerShot banana = new playerShot(getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getDir(), getProjectileSpeed(), getRange(), getDamage(), getLevel(), Sprite.banana);
+//            getLevel().addEntity(banana);
             if (closestTarget != null) {
                 onHit((Actor) closestTarget);
             }

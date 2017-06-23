@@ -9,12 +9,12 @@ import org.lwjgl.opengl.GL11;
  * Created by Kaleb on 6/5/2017.
  */
 public class Bullet extends ProjectileBase {
-    public Bullet(double x, double y, double dir, double spd, double dmg, Level level) {
-        super(x,y,dir,spd,dmg,level);
+    public Bullet(double x, double y, double startingX, double startingY, double dir, double spd, double rnge, double dmg, Level level) {
+        super(x,y,startingX,startingY,dir,spd,rnge,dmg,level);
 
         setHitBoxRadius(100);
 
-        setSprite(Sprite.meleeWalkingZombie);
+        setSprite(Sprite.banana);
     }
 
     public void update() {
@@ -23,5 +23,6 @@ public class Bullet extends ProjectileBase {
             applyDamage(getPlayer());
         } else if (getLevel().collideTiles(getX(), getY()))
             kill();
+        else if(outOfRange()) kill();
     }
 }

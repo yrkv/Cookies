@@ -11,10 +11,16 @@ import main.level.Level;
  */
 public class ProjectileBase extends MovingEntity {
     private Entity parent;
+    private double startingX;
+    private double startingY;
+    private double range;
 
     double damage;
-    public ProjectileBase(double x, double y, double dir, double spd, double dmg, Level level) {
+    public ProjectileBase(double x, double y, double startingX, double startingY, double dir, double spd, double rnge, double dmg, Level level) {
         super(x,y,dir,spd,level);
+        this.startingX = startingX;
+        this.startingY = startingY;
+        range = rnge;
         damage = dmg;
     }
 
@@ -22,6 +28,15 @@ public class ProjectileBase extends MovingEntity {
         return -1 * target.takeDamage(damage);
     }
 
+    protected boolean outOfRange() {
+        double xDiff = startingX - getX();
+        double yDiff = startingY - getY();
+
+        if(Math.sqrt((xDiff * xDiff) + (yDiff * yDiff)) < range) {
+            return false;
+        }
+        return true;
+    }
 
     public void move(double dir) {
         setX(getX() + getSpeed() * Math.cos(dir));
