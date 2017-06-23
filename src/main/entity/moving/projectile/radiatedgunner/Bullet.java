@@ -1,7 +1,8 @@
-package main.entity.moving.projectile;
+package main.entity.moving.projectile.radiatedgunner;
 
 import main.display.Sprite;
 import main.entity.moving.character.Player;
+import main.entity.moving.projectile.ProjectileBase;
 import main.level.Level;
 import org.lwjgl.opengl.GL11;
 
@@ -19,10 +20,6 @@ public class Bullet extends ProjectileBase {
 
     public void update() {
         move(getDir());
-        if(colidesWith(getPlayer())) {
-            applyDamage(getPlayer());
-        } else if (getLevel().collideTiles(getX(), getY()))
-            kill();
-        else if(outOfRange()) kill();
+        colisionCheckOnlyPlayer();
     }
 }

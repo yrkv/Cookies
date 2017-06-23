@@ -1,18 +1,24 @@
-package main.items.weapons;
+package main.items.weapons.dopeysword;
 
 import main.display.Sprite;
 import main.entity.Entity;
 import main.entity.moving.character.Actor;
-import main.entity.moving.projectile.playerShot;
+import main.items.weapons.WeaponBase;
 import main.level.Level;
 
 /**
  * Created by Kaleb on 6/6/2017.
  */
 public class DopeySword extends WeaponBase {
+    //CONFIG
+    private static final double DAMAGE = 50;
+    private static final double RANGE = 150;
+    private static final double PROJECTILESPEED = 10;
+    private static final double RELOADTIME = 500;
+    //END CONFIG
 
-    public DopeySword(double dmg, double rnge, double projectileSpeed, double reloadTime, Level level) {
-        super(dmg,rnge,projectileSpeed,reloadTime,level);
+    public DopeySword(Level level) {
+        super(DAMAGE,RANGE,PROJECTILESPEED,RELOADTIME,level);
 
         setSprite(Sprite.tile1);
     }
@@ -44,9 +50,9 @@ public class DopeySword extends WeaponBase {
         }
 
         if((System.currentTimeMillis() - getLastUse()) > getReloadTime()) {
-            //long ass banana making -- also its supposed to not be a projectile
-//            playerShot banana = new playerShot(getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getDir(), getProjectileSpeed(), getRange(), getDamage(), getLevel(), Sprite.banana);
-//            getLevel().addEntity(banana);
+            //long ass Banana making -- also its supposed to not be a projectile
+//            Banana Banana = new Banana(getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getX(), getLevel().getPlayer().getY(), getLevel().getPlayer().getDir(), getProjectileSpeed(), getRange(), getDamage(), getLevel());
+//            getLevel().addEntity(Banana);
             if (closestTarget != null) {
                 onHit((Actor) closestTarget);
             }

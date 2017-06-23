@@ -1,19 +1,10 @@
 package main.entity.moving.character;
 
 import main.display.Sprite;
-import main.items.ItemBase;
-import main.items.weapons.DopeySword;
-import main.items.weapons.WeaponBase;
-import main.keyboard.Key;
 import main.level.Level;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
-
-import java.awt.event.MouseWheelListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * Created by Kaleb on 6/1/2017.

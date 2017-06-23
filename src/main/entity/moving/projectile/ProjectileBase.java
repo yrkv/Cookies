@@ -28,6 +28,25 @@ public class ProjectileBase extends MovingEntity {
         return -1 * target.takeDamage(damage);
     }
 
+    public void colisionCheckOnlyPlayer() {
+        if(colidesWith(getPlayer())) {
+            applyDamage(getPlayer());
+        } else if (getLevel().collideTiles(getX(), getY()))
+            kill();
+        else if(outOfRange()) kill();
+    }
+
+    public void colisionCheckNotPlayer() {
+        for (Entity entity : getLevel().getEntities()) {
+            if (entity.isActor() && entity != getPlayer() && colidesWith(entity)) {
+                applyDamage((Actor) entity);
+                kill();
+            } else if (!getLevel().collideTiles(getX(), getY())) {
+                kill();
+            } else if (outOfRange()) kill();
+        }
+    }
+
     protected boolean outOfRange() {
         double xDiff = startingX - getX();
         double yDiff = startingY - getY();

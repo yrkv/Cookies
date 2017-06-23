@@ -1,8 +1,7 @@
 package main.entity.moving.character.enemy;
 
 import main.display.Sprite;
-import main.entity.moving.character.Player;
-import main.entity.moving.projectile.Bullet;
+import main.entity.moving.projectile.radiatedgunner.Bullet;
 import main.level.Level;
 
 /**

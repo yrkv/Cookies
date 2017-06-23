@@ -1,13 +1,12 @@
 package main;
 
-import main.display.Sprite;
-import main.items.weapons.DopeySword;
+import main.items.weapons.dopeysword.DopeySword;
+import main.items.weapons.sonicgun.SonicGun;
 import main.level.Level;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.GL_CLAMP_TO_EDGE;
 
 import java.io.IOException;
 
@@ -55,8 +54,12 @@ public class Main {
 //		level.addEntity(new meleeWalkingZombie(900,900,0,1.5,100,level));
 //		level.addEntity(new radiatedGunner(600,600,0,2,100,5000, 300,level));
 
-		DopeySword PoS = new DopeySword(50,300, 10,500, level);
-		level.getPlayer().addItem(PoS);
+//		DopeySword PoS = new DopeySword(level);
+//		level.getPlayer().addItem(PoS);
+//		level.getPlayer().equipItem(0);
+
+		SonicGun pow = new SonicGun(level);
+		level.getPlayer().addItem(pow);
 		level.getPlayer().equipItem(0);
 
 		level.deQueueEntities();
